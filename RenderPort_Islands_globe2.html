@@ -2341,7 +2341,7 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
     const Rz=Math.exp(lerp(Math.log(Rs),Math.log(R0),ez)),cz=lerp(H*.52,top0+R0,ez);const e=easeIO(q);const R=Rz*(1+e*2.4),top=lerp(cz-Rz,-H*.25,e);return{R,cx:W/2,cy:top+R,R0:Rz,ez}}
   function seaFill(){g.fillStyle=PAL.sea;g.fillRect(0,0,W,H);const gr=g.createRadialGradient(W*.6,H*.45,50,W*.6,H*.5,Math.max(W,H)*.8);gr.addColorStop(0,'rgba(170,200,205,.22)');gr.addColorStop(1,'rgba(60,95,110,.2)');g.fillStyle=gr;g.fillRect(0,0,W,H)}
   /* ---------- draw ---------- */
-  function draw(t,bt,q){const{R,cx,cy,R0,ez}=geo(q,bt),S=R0/700,rt=TESTM?t:Math.max(0,t-6.6),rot=TAU/3-(()=>{const P=13,u=rt/P,k=Math.floor(u),f=u-k,v=clamp((f-.55)/.45),ee=v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2;return(k+.06*f+.94*ee)*TAU/3})()+(+(new URLSearchParams(location.search).get('rot'))||0)*Math.PI/180;const fillA=ss(1.3,2.5,bt),objA=ss(4.6,5.6,bt);
+  function draw(t,bt,q){const{R,cx,cy,R0,ez}=geo(q,bt),S=R0/700,rot=TAU/3-PH*TAU/3+(+(new URLSearchParams(location.search).get('rot'))||0)*Math.PI/180;const fillA=ss(1.3,2.5,bt),objA=ss(4.6,5.6,bt);
     // sky
     const sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#a9cdd6');sky.addColorStop(.55,'#c4e0e3');sky.addColorStop(1,'#d9ecea');g.fillStyle=sky;g.globalAlpha=1-ss(.6,1,q);g.fillRect(0,0,W,H);g.globalAlpha=1;
     if(bt<2.8){g.save();g.globalAlpha=1-ss(1.6,2.8,bt);g.fillStyle='#5f8fa3';g.fillRect(0,0,W,H);g.strokeStyle='rgba(255,255,255,.12)';for(let x=0;x<W;x+=40){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=0;y<H;y+=40){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}g.restore()}
@@ -2448,10 +2448,33 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
   addEventListener('resize',resize);resize();
   const rb=document.querySelector('.replay');if(rb)rb.addEventListener('click',()=>{T0=performance.now()});
   const bt0=+(new URLSearchParams(location.search).get('bt')??NaN),TESTM=!isNaN(bt0);
+  /* ---------- island navigator (slideshow-style progress + plane position + jump) ---------- */
+  const NP=13;let PH=0,navClk=0,lastNow=null,jump=null,paused=false;
+  const gph=c=>{const u=c/NP,k=Math.floor(u),f=u-k,v=clamp((f-.55)/.45),ee=v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2;return k+.06*f+.94*ee};
+  const nav=document.createElement('nav');nav.id='gnav';nav.setAttribute('aria-label','島ナビゲーション');
+  nav.innerHTML=ORDER.map(([k,n,ja],i)=>`<button class="gn-seg" data-i="${i}" type="button"><span class="gn-lb"><b>${n}</b>${ja}</span><span class="gn-tr"><span class="gn-fill"></span></span></button>`).join('')+`<span class="gn-pl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>`;
+  document.body.appendChild(nav);const segs=[...nav.querySelectorAll('.gn-seg')],fills=segs.map(s=>s.querySelector('.gn-fill')),pl=nav.querySelector('.gn-pl');
+  const st=document.createElement('style');st.textContent=`#gnav{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:8;display:flex;gap:6px;align-items:flex-end;padding:10px 14px 12px;border-radius:16px;background:rgba(46,68,41,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(20,40,30,.18);opacity:var(--gnA,0);transition:opacity .3s;width:min(620px,86vw)}
+  #gnav .gn-seg{flex:1;display:flex;flex-direction:column;gap:7px;background:none;border:0;padding:4px 4px 0;cursor:pointer;color:rgba(255,255,255,.62);font:700 12px/1 "Zen Kaku Gothic New",sans-serif;letter-spacing:.06em;text-align:left}
+  #gnav .gn-seg b{font:600 11px/1 Jost,sans-serif;color:#c8962a;margin-right:6px;letter-spacing:.1em}#gnav .gn-seg.on{color:#fff}#gnav .gn-seg:hover{color:#fff}
+  #gnav .gn-tr{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden}#gnav .gn-fill{display:block;height:100%;width:0;background:#c8962a;border-radius:2px}
+  #gnav .gn-pl{position:absolute;bottom:4px;left:14px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#f6f3ea;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}
+  #gnav .gn-pl svg{width:14px;height:14px;fill:#2e4429;transform:rotate(90deg)}
+  @media (max-width:820px){#gnav{bottom:12px;padding:8px 10px 10px}#gnav .gn-seg{font-size:10.5px}}`;document.head.appendChild(st);
+  segs.forEach(sg=>sg.addEventListener('click',()=>{const i=+sg.dataset.i,cur=PH;let best=Math.ceil(cur-.08);while(((best%3)+3)%3!==i)best++;
+    jump={from:cur,to:best,t0:performance.now(),dur:800+380*Math.abs(best-cur)}}));
+  nav.addEventListener('mouseenter',()=>paused=true);nav.addEventListener('mouseleave',()=>paused=false);
+  function navUpdate(now,bt,hu){const dt=lastNow?Math.min(.1,(now-lastNow)/1000):0;lastNow=now;
+    if(jump){const e=clamp((now-jump.t0)/jump.dur);PH=lerp(jump.from,jump.to,easeIO(e));if(e>=1){navClk=jump.to*NP;PH=jump.to;jump=null}}
+    else{if(!paused&&(TESTM||bt>6.6))navClk+=dt;PH=gph(navClk)}
+    const k=jump?Math.round(jump.to):Math.floor(navClk/NP),f=jump?0:(navClk/NP-Math.floor(navClk/NP)),cur=((k%3)+3)%3;
+    segs.forEach((sg,i)=>{sg.classList.toggle('on',i===cur);fills[i].style.width=(i<cur?100:i===cur?f*100:0).toFixed(2)+'%'});
+    const pm=((PH%3)+3)%3,w=nav.clientWidth-28;pl.style.left=(14+w*pm/3)+'px';
+    document.documentElement.style.setProperty('--gnA',(ss(6.2,7,bt)*(1-clamp(hu*1.6))).toFixed(3));nav.style.pointerEvents=hu>.4?'none':'auto'}
   const ln=()=>(typeof sLine==='number'&&sLine!==null)?sLine:scrollY+H*.5;
   function progress(){let q=0,u=-1;if(typeof SEGS!=='undefined'&&SEGS.length){const hs=SEGS.find(s=>s.stop&&s.a===0),tr=SEGS.find(s=>!s.stop&&s.from===1),L=ln();
       if(hs)q=clamp((L-(hs.top+H*.5+H*.95))/(H*1.15));if(tr&&L>=tr.top)u=(L-tr.top)/tr.h}return{q,u}}
-  function loop(now){const t=(now-T0)/1000,bt=isNaN(bt0)?t:bt0;document.documentElement.style.setProperty('--hmA',ss(5.8,6.8,bt).toFixed(3));const{q,u}=progress();
+  function loop(now){const t=(now-T0)/1000,bt=isNaN(bt0)?t:bt0;{const pq=progress();navUpdate(now,bt,Math.max(typeof HEROU==='number'?HEROU:0,pq.q))}document.documentElement.style.setProperty('--hmA',ss(5.8,6.8,bt).toFixed(3));const{q,u}=progress();
     g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);const hu=(typeof HEROU==='number'?HEROU:0)*(1-q);
     if(q<1){g.save();g.globalAlpha=1-ss(.85,1,q);draw(t,bt,q);g.restore();
       if(hu>0){const gr=g.createLinearGradient(0,0,W*.55,0);gr.addColorStop(0,`rgba(28,52,46,${.5*hu})`);gr.addColorStop(1,'rgba(28,52,46,0)');g.fillStyle=gr;g.fillRect(0,0,W,H)}}
