@@ -295,6 +295,7 @@ main{position:relative;z-index:5;pointer-events:none}
 .tk-stub svg{width:26px;height:26px}
 .scroll-cue{margin-top:26px;color:#fff;font:500 12px/1 Jost;letter-spacing:.2em;display:flex;align-items:center;gap:12px;opacity:.9}
 .replay{margin-top:14px;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:999px;padding:7px 14px;font:500 12px "Zen Kaku Gothic New";cursor:pointer;opacity:.85}
+.hero-mark .replay{pointer-events:none;margin:16px 0 0;background:rgba(20,45,55,.28);border-color:rgba(255,255,255,.7);padding:8px 16px;font-size:12.5px;letter-spacing:.06em}
 .replay:hover{opacity:1;background:rgba(255,255,255,.12)}
 .scroll-cue i{display:block;width:60px;height:2px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
 .scroll-cue i::after{content:"";position:absolute;inset:0;width:40%;background:#fff;animation:cue 2s ease-in-out infinite}
@@ -445,8 +446,156 @@ html[style*="--heroU: 1"] .hero .panel,.hero .panel.on{pointer-events:auto}
 .hero-mark .hm-sub{margin:-8px 0 16px;font-weight:700;font-size:14px;letter-spacing:.3em;opacity:.85}
 .hero-mark .hm-cta{display:inline-flex;gap:10px;align-items:center;pointer-events:auto;margin:0 0 18px;padding:12px 24px;border-radius:999px;background:#c8962a;color:#fff;font-weight:700;font-size:14px;letter-spacing:.12em;text-decoration:none;box-shadow:0 6px 18px rgba(20,40,30,.22);transition:transform .2s}.hero-mark .hm-cta:hover{transform:translateY(-2px)}
 .hero-mark .hm-cue{font:600 11px/1 Jost,sans-serif;letter-spacing:.3em;opacity:.9}
+@media (max-width:820px){.hero-mark .hm-ja{font-size:min(6.4vw,30px);letter-spacing:.06em;white-space:nowrap}}
 .hero-mark .hm-cue i{display:block;width:1px;height:36px;margin:12px auto 0;background:linear-gradient(#fff,transparent);animation:cue 1.8s ease-in-out infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ===== PC: sub-service card + island on the right ===== */
+#svcCard{position:fixed;z-index:6;box-sizing:border-box;background:rgba(251,252,250,.98);color:#2e4429;border-radius:8px;box-shadow:0 14px 38px rgba(20,45,60,.3);padding:20px 24px 18px;opacity:0;overflow:hidden;transition:opacity .15s}
+#svcCard .sc-top{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:12px}
+#svcCard .sc-ic{color:#2e4429;margin-bottom:6px}
+#svcCard .sc-top b{font-size:20px;font-weight:900;letter-spacing:.08em;line-height:1.3}
+#svcCard .sc-top small{margin-top:5px;font:600 10px/1 Jost,sans-serif;letter-spacing:.2em;color:#c8962a}
+#svcCard .sc-items{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;justify-items:center}
+#svcCard .sc-items li{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:10.5px;font-weight:700;line-height:1.35;color:#2e4429}
+#svcCard .sc-items li svg{color:#2e4429}
+#svcCard .sc-case{border-top:1px dotted rgba(46,68,41,.45);padding-top:12px;display:flex;gap:10px}
+#svcCard .sc-cl{writing-mode:vertical-rl;font:600 24px/1 Jost,sans-serif;letter-spacing:.06em;color:#6a9db3;flex:none}
+#svcCard .sc-cb{flex:1;min-width:0}
+#svcCard .sc-img{position:relative;height:clamp(84px,17vh,150px);border-radius:10px;background:#9aa0a6;overflow:hidden}
+#svcCard .sc-img span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;color:#fff;border:1px solid rgba(255,255,255,.8);padding:3px 8px;background:rgba(0,0,0,.2)}
+#svcCard .sc-img b{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;color:#fff;font-size:13px;font-weight:900;letter-spacing:.1em;text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.45))}
+#svcCard p{margin:8px 0 0;font-size:10.5px;line-height:1.7;color:#c8962a;font-weight:500;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+#svcCard .sc-used{margin-top:6px;font-size:10px;line-height:1.55;font-weight:700;color:#2e4429}
+#svcCard .sc-used small{display:inline-block;margin-right:6px;padding:1px 6px;border-radius:3px;background:#2e4429;color:#fff;font-size:9px;font-weight:700}
+#svcCard .sc-items.n4{grid-template-columns:repeat(2,1fr);gap:10px 14px;justify-items:stretch}
+#svcCard .sc-items.n4 li{flex-direction:row;align-items:center;text-align:left;gap:8px}
+#svcCard .sc-items li small{display:block;font-weight:500;font-size:9px;line-height:1.35;margin-top:1px}
+#svcCard .sc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:10px;padding-top:8px;border-top:1px dotted rgba(46,68,41,.3)}
+#svcCard .sc-nav span{font:600 12px Jost,sans-serif;letter-spacing:.14em;color:#2e4429}
+#svcCard .sc-nav button{width:32px;height:32px;border-radius:50%;border:1.5px solid #2e4429;background:#fff;color:#2e4429;font:700 15px/1 sans-serif;cursor:pointer;padding:0;transition:background .2s,color .2s}
+#svcCard .sc-nav button:hover:not(:disabled){background:#2e4429;color:#fff}
+#svcCard .sc-nav button:disabled{opacity:.3;cursor:default}
+#focusUI .fu-nav{position:absolute;left:0;transform:translateX(-50%);display:flex;align-items:center;gap:20px;pointer-events:auto;white-space:nowrap}
+#focusUI .fu-nav span{font:600 20px Jost,sans-serif;letter-spacing:.14em;color:#fff;padding:6px 14px;border-radius:999px;background:rgba(46,68,41,.82)}
+#focusUI .fu-nav button{width:62px;height:62px;border-radius:50%;border:4px solid #fff;background:rgba(66,100,114,.92);color:#fff;font:700 26px/1 sans-serif;cursor:pointer;padding:0;box-shadow:0 4px 14px rgba(20,45,60,.3);transition:background .2s,transform .2s}
+#focusUI .fu-nav button:hover:not(:disabled){background:#2e4429;transform:scale(1.06)}
+#focusUI .fu-nav button:disabled{opacity:.35;cursor:default}
+@media (min-width:821px){#focusUI .fu-c,#focusUI .fu-pin,#focusUI .fu-card{display:none}#cases{display:none!important}.side .sub li.sub-case{display:none}}
+@media (max-width:820px){#svcCard{display:none}}
+/* ===== 私たち: 体験創造サポート図 (rpd) ===== */
+.hero .panel{width:min(1180px,calc(100vw - var(--nav-w) - 90px))}
+  .us{--dgw:clamp(460px,min(calc(100vh - 240px),calc(100vw - var(--nav-w) - 90px - 540px)),620px);
+  display:flex;align-items:center;gap:40px}
+.us-l{flex:1 1 auto;min-width:0}
+.us-ttl{width:min(560px,100%)}
+.rpdx{flex:none;width:var(--dgw);color:#fff}
+.rpdx svg{display:block;width:100%;height:auto;overflow:visible}
+.rpdx text{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700}
+.rpdx .rg{fill:#fffdf8;stroke:#2c4427;stroke-width:36}
+.rpdx .rc{fill:none}
+.rpdx .bar rect{fill:#c8962a}
+.rpdx .rn{fill:#fff;font-family:Jost,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em}
+.rpdx .pt{fill:#fff;font-family:Jost,sans-serif;font-weight:600;font-size:13px;letter-spacing:.34em}
+.rpdx .pd{fill:#c8962a;stroke:#fffdf8;stroke-width:2.5}
+.rpdx .fl{fill:#fff;font-size:16px;letter-spacing:.04em}
+.rpdx .bd{fill:#fffdf8}
+.rpdx .st{fill:#2c4427;font-size:15px;letter-spacing:.04em}
+.rpd{flex:none;position:relative;width:var(--dgw);color:#fff;user-select:none;-webkit-user-select:none}
+.rpd-stage{position:relative;width:100%;aspect-ratio:1/1}
+.rpd-stage canvas,.rpd-stage svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+.rpd svg text{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;letter-spacing:.04em}
+.rpd svg .num{font-family:Jost,sans-serif;font-weight:600;letter-spacing:.08em}
+/* rings */
+.rpd .trkA{fill:none;stroke:var(--green);stroke-width:7}
+.rpd .trkB{fill:none;stroke:rgba(255,255,255,.75);stroke-width:2.5}
+.rpd .trkBon{fill:none;stroke:var(--mustard);stroke-width:5;stroke-linecap:round;stroke-dasharray:1295 1295;stroke-dashoffset:1295;transition:stroke-dashoffset 1.4s cubic-bezier(.6,0,.2,1),opacity .4s}
+.rpd.all .trkBon{stroke-dashoffset:0}
+.rpd .trkC{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.5;stroke-dasharray:3 7}
+.rpd .arw{fill:none;stroke:rgba(255,255,255,.85);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.rpd.all .arw{stroke:var(--mustard)}
+.rpd .seg{fill:none;stroke:var(--mustard);stroke-width:5;stroke-linecap:round;opacity:0;transition:opacity .4s}
+.rpd .seg.on{opacity:1}
+/* nodes: 出現アニメ (中心→外へ) */
+.rpd .nd{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.4);transition:opacity .5s,transform .6s cubic-bezier(.3,1.5,.5,1);transition-delay:var(--d,0s)}
+.rpd.in .nd{opacity:1;transform:none}
+.rpd .ring{opacity:0;transition:opacity .8s;transition-delay:var(--d,0s)}
+.rpd.in .ring{opacity:1}
+.rpd .ndA circle{fill:var(--mustard);stroke:var(--paper);stroke-width:3}
+.rpd .ndA text{fill:#fff;font-size:13px}
+.rpd .ndA text.lg{font-size:11.5px;letter-spacing:0}
+.rpd .ndB .bg{fill:var(--paper);stroke:var(--mustard);stroke-width:0;transition:stroke-width .3s,fill .3s}
+.rpd .ndB .lb{fill:var(--green);font-size:13px}
+.rpd .ndB .num{fill:var(--mustard);font-size:10.5px}
+.rpd .ndB .dot{fill:var(--mustard)}
+.rpd .ndB>g{transition:opacity .35s,transform .35s;transform-box:fill-box;transform-origin:center}
+.rpd.part .ndB:not(.on)>g{opacity:.42}
+.rpd.part .ndB.on .bg{stroke-width:3}
+.rpd.part .ndB.on>g{transform:scale(1.06)}
+.rpd .ndC .bg{fill:rgba(255,255,255,.13);stroke:rgba(255,255,255,.85);stroke-width:1.5}
+.rpd .ndC text{fill:#fff;font-size:12px}
+.rpd .ndC .ic{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rpd .ndB,.rpd .ndA,.rpd .ndC{cursor:pointer;outline:none}
+.rpd .ndB:hover .bg,.rpd .ndB:focus-visible .bg{fill:#fff3d6}
+.rpd .ndA:hover circle,.rpd .ndA:focus-visible circle{fill:#d9a636}
+.rpd .ndC:hover .bg,.rpd .ndC:focus-visible .bg{fill:rgba(255,255,255,.3)}
+.rpd .core circle{fill:var(--paper)}
+.rpd .core .rg{fill:none;stroke:var(--green);stroke-width:8}
+.rpd .core rect{fill:var(--mustard)}
+.rpd .sm-only{display:none}
+.rpd.sm .sm-only{display:inline}
+.rpd.sm .pc-only{display:none}
+/* 四隅の凡例 */
+.rpd-lg{position:absolute;font-size:11.5px;line-height:1.55;font-weight:700;letter-spacing:.06em;opacity:0;transition:opacity .6s 1.6s;text-shadow:0 1px 8px rgba(20,50,60,.35);pointer-events:none}
+.rpd.in .rpd-lg{opacity:1}
+.rpd-lg small{display:flex;align-items:center;gap:7px;font:600 9.5px/1 Jost,sans-serif;letter-spacing:.22em;color:#f3d68a;margin-bottom:5px}
+.rpd-lg small i{display:inline-block;flex:none}
+.rpd-lg.a{left:0;top:0}.rpd-lg.b{right:0;top:0;text-align:right}.rpd-lg.b small{justify-content:flex-end}.rpd-lg.c{left:0;bottom:0}
+.rpd-lg .mA{width:11px;height:11px;border-radius:50%;background:var(--mustard);box-shadow:0 0 0 2px var(--paper)}
+.rpd-lg .mB{width:20px;height:10px;border-radius:6px;background:var(--paper)}
+.rpd-lg .mC{width:20px;height:10px;border-radius:6px;border:1.5px solid #fff;background:rgba(255,255,255,.15)}
+/* 一括 / 一部 切替 + キャプション */
+.rpd-ctl{display:flex;align-items:center;gap:16px;margin-top:6px}
+.rpd-sw{position:relative;display:flex;flex:none;background:rgba(20,45,55,.35);border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:3px}
+.rpd-sw::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--paper);transition:transform .45s cubic-bezier(.5,0,.2,1)}
+.rpd.part .rpd-sw::before{transform:translateX(100%)}
+.rpd-sw button{position:relative;z-index:1;width:112px;border:0;background:none;color:#fff;font:700 12.5px/1 "Zen Kaku Gothic New",sans-serif;letter-spacing:.08em;padding:9px 0;cursor:pointer;transition:color .3s}
+.rpd:not(.part) .rpd-sw button[data-m="all"],.rpd.part .rpd-sw button[data-m="part"]{color:var(--green)}
+.rpd-cap{flex:1;min-width:0;margin:0;font-size:12.5px;font-weight:500;line-height:1.7;min-height:3.4em;display:flex;align-items:center;text-shadow:0 1px 8px rgba(20,50,60,.4)}
+.rpd-cap b{color:#f3d68a;font-weight:700}
+.rpd-cap span{transition:opacity .25s}
+.rpd-cap.sw span{opacity:0}
+.rpd-hint{display:block;font-style:normal;font-size:10.5px;opacity:.75;font-weight:500;margin-top:1px}
+/* SP用 リスト凡例 */
+.rpd-list{display:none}
+.rpd.sm .rpd-lg{display:none}
+.rpd.sm .rpd-list{display:block;margin-top:14px;font-size:12px}
+.rpd-list dl{margin:0 0 12px}
+.rpd-list dt{font:600 10px/1 Jost,sans-serif;letter-spacing:.2em;color:#f3d68a;margin:0 0 7px;display:flex;align-items:center;gap:8px}
+.rpd-list dt b{font:700 12.5px/1.4 "Zen Kaku Gothic New",sans-serif;letter-spacing:.06em;color:#fff}
+.rpd-list dd{margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.rpd-list dd span{border-radius:999px;padding:4px 11px;font-weight:700;font-size:11.5px;line-height:1.4}
+.rpd-list .lA span{background:var(--mustard);color:#fff}
+.rpd-list .lB span{background:var(--paper);color:var(--green);cursor:pointer;transition:opacity .3s,box-shadow .3s}
+.rpd-list .lB span i{font:600 10px Jost,sans-serif;color:var(--mustard);font-style:normal;margin-right:5px}
+.rpd.part .rpd-list .lB span:not(.on){opacity:.45}
+.rpd.part .rpd-list .lB span.on{box-shadow:0 0 0 2px var(--mustard) inset}
+.rpd-list .lC span{border:1.5px solid rgba(255,255,255,.8);background:rgba(255,255,255,.12)}
+.rpd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:1366px) and (min-width:1101px){.us{gap:30px;--dgw:clamp(460px,min(calc(100vh - 240px),calc(100vw - var(--nav-w) - 90px - 510px)),620px)}.us-txt{font-size:14px}.us-txt .bx{margin:0 3px}}
+@media (max-width:1100px) and (min-width:821px){
+  .us{--dgw:clamp(380px,min(calc(100vh - 240px),calc(100vw - var(--nav-w) - 90px - 430px)),520px)}
+  .us-txt{font-size:13.5px}
+}
+@media (max-width:820px){
+  .us{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .us-l{display:contents}
+  .us-ttl{order:0}.rpd,.rpdx{order:1;width:100%;margin:0 0 26px}.us-txt{order:2}
+  .rpdx{width:calc(100% + 76px);margin:0 -38px 18px;align-self:center}
+  .rpd-ctl{flex-direction:column;align-items:stretch;gap:10px}
+  .rpd-sw{align-self:center}
+  .rpd-cap{min-height:3.6em;justify-content:center;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){.rpd *{transition:none!important}}
 </style>
 </head>
 <body>
@@ -491,19 +640,41 @@ html[style*="--heroU: 1"] .hero .panel,.hero .panel.on{pointer-events:auto}
 <main>
   <!-- HERO -->
   <section class="stop hero" id="top" data-anchor="0">
-    <div class="hero-mark"><div class="hm-en">RENDER PORT INC.</div><div class="hm-ja">この一瞬の<em>体験</em>のために。</div><div class="hm-cue">SCROLL<i></i></div></div>
+    <div class="hero-mark"><div class="hm-en">RENDER PORT INC.</div><div class="hm-ja">この一瞬の<em>体験</em>のために。</div><div class="hm-cue">SCROLL<i></i></div><button class="replay" type="button">↻ 島ができるまでを、もう一度見る</button></div>
     <div class="panel">
       <div class="us">
-        <img class="us-ttl" src="assets/service/about-ttl.png" alt="その「時」やその「場」で感じる、一瞬の体験の連続にユーモアを。">
-        <div class="us-body">
+        <div class="us-l">
+          <img class="us-ttl" src="assets/service/about-ttl.png" alt="その「時」やその「場」で感じる、一瞬の体験の連続にユーモアを。">
           <div class="us-txt">
             <p>リアルに生きる人々は、暮らす場所、<br>働く時間、息抜きのひととき。<br>そのすべてに<b class="bx">体験</b>求めながら、<br>より良い場所、より良い過ごし方を<br>選び取っているのではないでしょうか。</p>
             <p>私たちは、そんな一瞬一瞬の体験を創り出す集団です。<br>かっこいい場やコンテンツを提供するのは、当たり前のこと。<br>人が本当に選びたくなる体験の先、<br>その一瞬一瞬のユーモアを思い描き、体験として<b class="bx">具現化</b>していく――<br>それが私たちの仕事です。</p>
           </div>
-          <img class="us-dg" src="assets/service/about-diagram.png" alt="Render Portの体験創造サポート図：各フェーズから体験価値の創造サポート／一括または一部プロジェクトサポート／様々な業種のサポート">
         </div>
+        <div class="rpdx" role="img" aria-label="Render Portの図：緑の輪が港（Port）、中央の金色の線がRender。港のまわりに8つの業種（商業店舗・オフィス・住居・キャンプ・イベント・ホテル・旅館・DX・WEB）、線の上にコンセプト・企画・設計・施工・WEB・運営の工程が並びます。">
+          <svg viewBox="0 0 640 640" aria-hidden="true">
+            <defs><path id="rpdxPort" d="M117.0 291.5 A205 205 0 0 1 158.5 193.8"/></defs>
+            <circle class="rg" cx="320" cy="320" r="205"/>
+            <circle class="rc" cx="320" cy="320" r="187"/>
+            <g class="bar" transform="rotate(-24 320 320)"><rect x="302" y="142" width="36" height="356" rx="13"/><text class="rn" transform="rotate(90 319 170)" x="319" y="174" text-anchor="middle">RENDER</text></g>
+            <text class="pt"><textPath href="#rpdxPort" startOffset="50%" text-anchor="middle">PORT</textPath></text>
+            <circle class="pd" cx="320.0" cy="115.0" r="10"/><text class="fl" x="320.0" y="71.0" text-anchor="middle">商業店舗</text>
+            <circle class="pd" cx="465.0" cy="175.0" r="10"/><text class="fl" x="494.7" y="150.3" text-anchor="start">オフィス</text>
+            <circle class="pd" cx="525.0" cy="320.0" r="10"/><text class="fl" x="567.0" y="325.0" text-anchor="start">住居</text>
+            <circle class="pd" cx="465.0" cy="465.0" r="10"/><text class="fl" x="494.7" y="499.7" text-anchor="start">キャンプ</text>
+            <circle class="pd" cx="320.0" cy="525.0" r="10"/><text class="fl" x="320.0" y="579.0" text-anchor="middle">イベント</text>
+            <circle class="pd" cx="175.0" cy="465.0" r="10"/><text class="fl" x="145.3" y="499.7" text-anchor="end">ホテル・旅館</text>
+            <circle class="pd" cx="115.0" cy="320.0" r="10"/><text class="fl" x="73.0" y="325.0" text-anchor="end">DX</text>
+            <circle class="pd" cx="175.0" cy="175.0" r="10"/><text class="fl" x="145.3" y="150.3" text-anchor="end">WEB</text>
+            <circle class="bd" cx="281.4" cy="233.2" r="6.5"/><text class="st" x="257.4" y="238.2" text-anchor="end">コンセプト</text>
+            <circle class="bd" cx="296.8" cy="267.9" r="6.5"/><text class="st" x="320.8" y="272.9" text-anchor="start">企画</text>
+            <circle class="bd" cx="312.3" cy="302.6" r="6.5"/><text class="st" x="288.3" y="307.6" text-anchor="end">設計</text>
+            <circle class="bd" cx="327.7" cy="337.4" r="6.5"/><text class="st" x="351.7" y="342.4" text-anchor="start">施工</text>
+            <circle class="bd" cx="343.2" cy="372.1" r="6.5"/><text class="st" x="319.2" y="377.1" text-anchor="end">WEB</text>
+            <circle class="bd" cx="358.6" cy="406.8" r="6.5"/><text class="st" x="382.6" y="411.8" text-anchor="start">運営</text>
+          </svg>
+        </div>
+          </div>
       </div>
-      <button class="replay" type="button">↻ 島ができるまでを、もう一度見る</button>
     </div>
   </section>
 
@@ -528,9 +699,8 @@ html[style*="--heroU: 1"] .hero .panel,.hero .panel.on{pointer-events:auto}
     <ul class="chips">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>事業企画・PM支援</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>不動産・土地活用支援</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>建築・内装・デザイン</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>施工</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>住宅・リフォーム＆店舗・オフィスデザイン</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>デザイン・設計施工</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>住まい・店舗・オフィス</li>
       </ul>
   </section>
 
@@ -557,8 +727,7 @@ html[style*="--heroU: 1"] .hero .panel,.hero .panel.on{pointer-events:auto}
     <ul class="chips">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>WEBサイト・広告</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>予約・アプリ開発</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>スマート施設管理（IoT）</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>データ活用</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-3-3 3 3-3 3"/></svg>スマート施設管理・データ活用</li>
       </ul>
   </section>
 
@@ -2276,6 +2445,7 @@ const heroZoomBB=()=>{const pts=[];for(const[i,j]of A.shape){pts.push(A.P(i,j),A
 function fitZ(b){const mob=W<820;const rw=mob?W*1.05:W*.86,rh=mob?H*.6:H*.76;const z=Math.min(rw/(b.x1-b.x0),rh/(b.y1-b.y0));return{cx:(b.x0+b.x1)/2,cy:(b.y0+b.y1)/2,z,sx:W/2,sy:mob?H*.42:H*.43}}
 let HEROU=0,US=0;const SEAIMG=new Image();SEAIMG.src='assets/end-bg.png';let TICKETPULSE=null;
 const MAPL=()=>W<1100?Math.min(W*.5,420):486,HDB=()=>Math.min(240,H*.27);
+const SCW=()=>Math.min(400,W*.3),SCL=()=>MAPL()+(W<1100?10:24),SCR=()=>SCL()+SCW(),SCT=()=>HDB()+26;
 function fit(b,k){const mob=W<820;let rw,rh,rx,ry;if(mob){rw=W*.98;rx=W/2;const sec=({2:'dev',3:'stay',4:'web'})[k];
     if(sec){const hb=$(`#hdWrap .hd[data-sec="${sec}"]`)?.getBoundingClientRect().bottom||H*.42;ry=hb+(H-hb)*.5;rh=(H-hb)*.92}
     else{rh=H*.5;ry=H*.29}}else if(k===5){const x0=($('.end')?.getBoundingClientRect().right||W*.45)+36;rw=W-x0-28;rh=H*.86;rx=x0+rw/2;ry=H*.5}else if(k>=2){const x0=MAPL(),t0=HDB();rw=W-x0-28;rh=H-t0-30;rx=x0+rw/2;ry=t0+rh/2}else{const pr=(k===1?($('.svc')?.getBoundingClientRect().right||W*.45):($('#dev .panel')?.getBoundingClientRect().right||W*.45))+24;const x0=k===0?Math.max(pr-40,W*.43):pr;rw=W-x0-28;rh=H*.84;rx=x0+rw/2;ry=H*.53}
@@ -2336,7 +2506,7 @@ function mkPath(pts){const seg=[];let L=0;for(let k=0;k<pts.length-1;k++){const 
 function pathAt(p,s){s=clamp(s,0,p.L);let sg=p.seg[p.seg.length-1];for(const q of p.seg){if(s<=q.L0+q.l){sg=q;break}}const u=sg.l?clamp((s-sg.L0)/sg.l):0;
   return{i:lerp(sg.a[0],sg.b[0],u),j:lerp(sg.a[1],sg.b[1],u),di:(sg.b[0]-sg.a[0])/(sg.l||1),dj:(sg.b[1]-sg.a[1])/(sg.l||1)}}
 const TOURS={};
-function defTour(a,o){const T={a,...o,cur:{mode:'arr',k:-1,t:0},FOC:[]};T.spots.forEach(s=>s.path=mkPath(s.legs));if(T.end)T.endPath=mkPath(T.end);T.TOT=DT.arr+T.spots.length*(DT.drv+DT.hld)+(T.end?DT.ext+DT.cases:0);TOURS[a]=T;
+function defTour(a,o){if(innerWidth>=820)o={...o,end:null};const T={a,...o,cur:{mode:'arr',k:-1,t:0},FOC:[]};T.spots.forEach(s=>s.path=mkPath(s.legs));if(T.end)T.endPath=mkPath(T.end);T.TOT=DT.arr+T.spots.length*(DT.drv+DT.hld)+(T.end?DT.ext+DT.cases:0);TOURS[a]=T;
   // vehicle
   const where=i=>!T.ext?0:(i<T.ext.b0?0:i<T.ext.b1?1:2);
   const mk=(I,off,zone,offJ=0)=>t=>{const c=tourCar(T,T.cur);const oi=-c.dj*.27,oj=c.di*.27,i=c.i+oi,j=c.j+oj;if(where(i)!==zone)return null;return{d:(i-off)+(j-offJ)+.35,fp:ptFP(i-off,j-offJ,.4),f:(g,t)=>drawTourVeh(g,{...T,I},i-off,j-offJ,c,t)}};
@@ -2361,7 +2531,7 @@ function tourState(T,u){let X=clamp(u)*T.TOT;if(X<DT.arr)return{mode:'arr',k:-1,
 function tourCar(T,st){if(st.mode==='arr')return{i:T.start[0],j:T.start[1],di:T.startDir[0],dj:T.startDir[1],moving:false};
   if(st.mode==='exit')return{...pathAt(T.endPath,easeIO(st.t)*T.endPath.L),moving:st.t<1};if(st.mode==='cases')return{...pathAt(T.endPath,T.endPath.L),moving:false};const sp=T.spots[st.k];if(st.mode==='hold')return{...pathAt(sp.path,sp.path.L),moving:false};return{...pathAt(sp.path,easeIO(st.t)*sp.path.L),moving:true}}
 function layoutTours(){for(const a in TOURS){const T=TOURS[a],A0=ANCH[a],mob=W<820;let sx,sy;
-  if(mob){sx=W*.5;const hb=$(`#hdWrap .hd[data-sec="${T.sec}"]`)?.getBoundingClientRect().bottom||H*.42;sy=hb+(H-hb)*.48}else{const pr=MAPL();const rw=W-pr-28;sx=pr+rw*.38;sy=HDB()+(H-HDB())*.6}
+  if(mob){sx=W*.5;const hb=$(`#hdWrap .hd[data-sec="${T.sec}"]`)?.getBoundingClientRect().bottom||H*.42;sy=hb+(H-hb)*.48}else{sx=(SCR()+W)/2;sy=HDB()+(H-HDB())*.58}
   T.FOC=T.spots.map(sp=>{const[x,y]=T.I.P(...sp.f);return{cx:x,cy:y,z:Math.min(A0.z*2.15,1.9),sx,sy}})}}
 function segU(seg,line){return clamp((line-H/2-seg.top)/Math.max(1,seg.h-H))}
 function exitSX(){if(W<820)return null;const el=$('#cases');const r=el&&el.getBoundingClientRect();if(!r||r.width<10)return W*.85;return Math.min(W-50,(r.right+W)/2)}
@@ -2377,16 +2547,25 @@ function updateTours(line){for(const a in TOURS){const T=TOURS[a];const seg=SEGS
 const FU=document.createElement('div');FU.id='focusUI';FU.setAttribute('aria-live','polite');document.body.appendChild(FU);let fuKey='';
 function buildFU(T,k){const sp=T.spots[k];const R=250,cy0=-70,n=sp.items.length;const angs=n===4?(sp.card?[-82,-47,-12,23]:[-52,-8,36,82]):[-62,-18,26];
   let h=`<div class="fu-ring" style="left:${-R}px;top:${cy0-R}px;width:${2*R}px;height:${2*R}px"></div>`;
+  if(W>=820){h+=`<div class="fu-nav" style="top:${cy0+R-92}px"><button type="button" class="fu-prev" aria-label="前の項目"${k===0?' disabled':''}>←</button><span>${String(k+1).padStart(2,'0')} / ${String(T.spots.length).padStart(2,'0')}</span><button type="button" class="fu-next" aria-label="次の項目">→</button></div>`;FU.dataset.a=T.a;FU.dataset.k=k}
   sp.items.forEach(([icn,tx],q)=>{const a=angs[q]*Math.PI/180,x=Math.cos(a)*R,y=cy0+Math.sin(a)*R;h+=`<div class="fu-c" style="left:${x}px;top:${y}px;animation-delay:${.08+q*.07}s">${ic(icn)}<span>${tx}</span></div>`});
   h+=`<div class="fu-pin${sp.sm?' sm':''}"><div class="fu-ic">${ic(sp.icon,52)}</div><b>${sp.t}</b><small>${sp.en}</small></div>`;
   if(sp.card)h+=`<div class="fu-card${n===4?' c4':''}"><p>${sp.card}</p><a class="btn btn-m" href="#contact" data-go="contactform">${sp.btn||'お問い合わせ'}</a></div>`;
   FU.innerHTML=h;FU.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.dataset.go)}))}
+// ---- PC: sub-service card (left of the island) that swaps as you scroll
+const SC=document.createElement('div');SC.id='svcCard';SC.setAttribute('aria-live','polite');document.body.appendChild(SC);let scKey='';
+function buildSC(T,k){const sp=T.spots[k],cs=CASES[T.a],c=cs[Math.min(k,cs.length-1)];
+  SC.innerHTML=`<div class="sc-top"><span class="sc-ic">${ic(sp.icon,52)}</span><b>${sp.t}</b><small>${sp.en}</small></div><ul class="sc-items n${sp.items.length}">${sp.items.map(([i,t])=>`<li>${ic(i,26)}<span>${t}</span></li>`).join('')}</ul><div class="sc-case"><div class="sc-cl">Case Studies</div><div class="sc-cb"><div class="sc-img"><span>${c.tag}</span><b>${c.t}</b></div><p>${c.d}</p>${c.can?`<div class="sc-used"><small>できること</small>${c.can}</div>`:''}</div></div>`;SC.dataset.a=T.a;SC.dataset.k=k}
+SC.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const T=TOURS[+SC.dataset.a],k=+SC.dataset.k;if(!T)return;if(b.classList.contains('sc-prev')){if(k>0)tourScrollTo(T,k-1)}else if(b.classList.contains('sc-next')){if(k<T.spots.length-1)tourScrollTo(T,k+1);else goTo({2:'stay',3:'web',4:'faq'}[T.a])}});
+function updateSC(T,k,op){const on=W>=820&&T&&k>=0&&op>.02;if(on&&scKey!==T.a+'-'+k){buildSC(T,k);scKey=T.a+'-'+k}
+  SC.style.left=SCL()+'px';SC.style.top=SCT()+'px';SC.style.width=SCW()+'px';SC.style.maxHeight=(H-SCT()-22)+'px';SC.style.opacity=W>=820?op:0;SC.style.transform=`translateY(${((1-op)*26).toFixed(1)}px)`;SC.style.pointerEvents=op>.5?'auto':'none'}
+FU.addEventListener('click',e=>{const b=e.target.closest('.fu-nav button');if(!b)return;const T=TOURS[+FU.dataset.a],k=+FU.dataset.k;if(!T)return;if(b.classList.contains('fu-prev')){if(k>0)tourScrollTo(T,k-1)}else if(k<T.spots.length-1)tourScrollTo(T,k+1);else goTo({2:'stay',3:'web',4:'faq'}[T.a])});
 function updateFU(){const seg=cam&&cam.seg;const T=seg&&seg.stop?TOURS[seg.a]:null;let k=-1,op=0;
   if(T){const st=T.cur;if(st.mode==='hold'){k=st.k;op=1}else if(st.mode==='drive'){if(st.t<.25&&st.k>0){k=st.k-1;op=1-st.t/.25}else if(st.t>.8){k=st.k;op=(st.t-.8)/.2}}}
   if(T&&k>=0&&fuKey!==T.a+'-'+k){buildFU(T,k);fuKey=T.a+'-'+k}
-  updatePins(k,op,T);FU.style.opacity=op;FU.style.pointerEvents=op>.5?'auto':'none';FU.classList.toggle('on',op>.02);
+  updateSC(T,k,op);updatePins(k,op,T);FU.style.opacity=op;FU.style.pointerEvents=op>.5?'auto':'none';FU.classList.toggle('on',op>.02);
   if(T&&k>=0){const[x,y]=T.I.P(...T.spots[k].f);const X=cam.sx+(x-cam.cx)*cam.z,Y=cam.sy+(y-cam.cy)*cam.z;const mob=W<820;
-    const pr=mob?0:MAPL();const sc=mob?.5:clamp(Math.min((W-pr)/760,H/900),.55,1);FU.style.transform=`translate(${X}px,${Y}px) scale(${sc})`}
+    const pr=mob?0:SCR();const sc=mob?.5:clamp(Math.min((W-pr)/720,H/1050),.45,.85);FU.style.transform=`translate(${X}px,${Y}px) scale(${sc})`}
   for(const a in TOURS){const TT=TOURS[a];const act=(T===TT&&TT.cur.mode==='hold')?TT.cur.k:-1;const inCases=T===TT&&(TT.cur.mode==='cases'||TT.cur.mode==='exit');
     $$(`#${TT.sec} .chips li`).forEach((li,q)=>li.classList.toggle('on',q===act));
     $$(`.side li[data-tour="${TT.sec}"] .sub li`).forEach((li,q)=>li.classList.toggle('on',li.classList.contains('sub-case')?inCases:q===act))}}
@@ -2394,37 +2573,33 @@ function updateFU(){const seg=cam&&cam.seg;const T=seg&&seg.stop?TOURS[seg.a]:nu
 /* ---------- tour data ---------- */
 defTour(2,{I:ISL.dev,sec:'dev',veh:'car',start:DEVR.tour.start,startDir:DEVR.tour.dir,end:DEVR.tour.end,endGo:'船着場へ。次は船旅です',welcome:'ようこそ！島内をご案内します',spots:[
   {t:'事業企画・PM支援',en:'BUSINESS PLANNING',icon:'plan',f:[DEVR.OF.i+1.35,DEVR.OF.j+1.05,DEVR.OF.h+1],legs:DEVR.tour.legs[0],go:'事業企画・PM支援へ',
-   items:[['doc','事業コンセプト策定・<br>事業計画書作成'],['bulb','既存事業の<br>改善提案'],['wrench','滞在価値を<br>高める客室設計'],['cube','プロジェクト<br>マネジメント']]},
+   items:[['doc','事業コンセプト策定・<br>事業計画書作成'],['bulb','既存事業の<br>改善提案'],['chart','市場・物件調査'],['cube','プロジェクト<br>マネジメント']]},
   {t:'不動産・<br>土地活用支援',en:'REAL ESTATE',icon:'sale',f:[DEVR.LT.i+1.8,DEVR.LT.j+1.55,.8],legs:DEVR.tour.legs[1],go:'売地のほうへ',
    items:[['bldg','テナント<br>リーシング'],['cols','用地・物件の<br>売買仲介'],['sprout','遊休地<br>収益化'],['chart','投資不動産<br>企画']]},
-  {t:'建築・内装<br>デザイン',en:'ARCHITECTURE DESIGN',icon:'compass',f:[DEVR.DL.i+.95,DEVR.DL.j+.9,1.8],legs:DEVR.tour.legs[2],go:'デザインラボへ',
-   items:[['shapes','ブランディング'],['grid','3Dパース<br>CG制作'],['lamp','内装インテリア<small>家具・什器・照明・<br>サイン計画</small>'],['compass','建築<br>意匠設計']]},
-  {t:'施工',en:'CONSTRUCTION',icon:'helmet',f:[DEVR.CT.i+1,DEVR.CT.j+1,3.4],legs:DEVR.tour.legs[3],go:'建設現場へ',
-   items:[['house','新築・増改築'],['refresh','各種<br>リノベーション'],['wifi','IoT<br>導入工事'],['call','アフター<br>サポート']]},
-  {t:'住宅・リフォーム＆<br>店舗・オフィス<br>デザイン',en:'HOME & SHOP',icon:'sofa',sm:1,f:[DEVR.RH.i+.75,DEVR.RH.j+.7,1.3],legs:DEVR.tour.legs[4],go:'街のほうへ',
-   items:[['house','新築住宅<br>デザイン'],['refresh','リフォーム・<br>リノベーション'],['store','店舗・<br>オフィスデザイン']],
+  {t:'デザイン・<br>設計施工',en:'DESIGN & BUILD',icon:'compass',f:[DEVR.CT.i+1,DEVR.CT.j+1,3.4],legs:[...DEVR.tour.legs[2],...DEVR.tour.legs[3].slice(1)],go:'デザインラボから建設現場へ',
+   items:[['compass','建築・意匠設計'],['lamp','内装インテリア<small>家具・什器・照明・<br>サイン</small>'],['grid','3Dパース<br>CG制作'],['helmet','新築・リノベーション<br>施工<small>アフターサポートまで</small>']]},
+  {t:'住まい・店舗・<br>オフィス',en:'HOME & SHOP',icon:'sofa',sm:1,f:[DEVR.RH.i+.75,DEVR.RH.j+.7,1.3],legs:DEVR.tour.legs[4],go:'街のほうへ',
+   items:[['house','ホテルライクな<br>住宅設計'],['refresh','リフォーム・<br>リノベーション'],['store','店舗・カフェ設計'],['bldg','オフィス内装・移転']],
    card:'ホテル・商業空間で培ったノウハウを、個人の住まいや店舗・オフィスへ。日常を少し特別な体験に変える、トータルデザインをご提案します。'},
 ]});
 defTour(3,{I:ISL.stay,sec:'stay',veh:'cart',start:STAYR.tour.start,startDir:STAYR.tour.dir,welcome:'ようこそ！カートでご案内します',end:STAYR.tour.end,endGo:'ヘリポートへ。次は空の旅です',spots:[
   {t:'宿泊施設企画',en:'HOTEL PLANNING',icon:'bed',f:STAYR.tour.f0,legs:STAYR.tour.legs[0],go:'ホテル棟へ',
    items:[['bulb','コンセプト・<br>ブランド設計'],['chart','事業計画・<br>収支計画'],['bed','客室・施設<br>プランニング'],['cube','開業準備<br>サポート']]},
   {t:'運用改善支援',en:'OPERATION SUPPORT',icon:'chart',f:STAYR.tour.f1,legs:STAYR.tour.legs[1],go:'運営ダッシュボードへ',
-   items:[['chart','稼働率・<br>売上分析'],['refresh','料金・<br>OTA最適化'],['phone','SNS・<br>集客改善'],['wrench','オペレーション<br>改善']]},
+   items:[['chart','現状診断・<br>コンセプト再設計'],['refresh','OTA・予約<br>媒体戦略'],['wrench','スタッフ研修・<br>品質向上'],['phone','口コミ・<br>評価対策']]},
   {t:'自社ブランドによる<br>企画・運営',en:'RENDER FIKA SAMMU',icon:'tent',sm:1,f:STAYR.tour.f2,legs:STAYR.tour.legs[2],go:'キャンプ場 Render Fika Sammu へ',
-   items:[['tent','グランピング・<br>キャンプ'],['sprout','貸切サウナ・<br>アウトドア体験'],['store','カフェ・<br>ショップ運営'],['bulb','オリジナル<br>イベント企画']]},
+   items:[['tent','キャンプ・<br>グランピング'],['sprout','貸切露天風呂・<br>貸切サウナ'],['house','足湯・<br>ドッグラン'],['bulb','リラクゼーション・<br>収穫体験']]},
   {t:'ロケ地・撮影・<br>イベント利用',en:'LOCATION & EVENT',icon:'camera',sm:1,f:STAYR.tour.f3,legs:STAYR.tour.legs[3],go:'撮影現場へ',
-   items:[['camera','ドラマ・CM<br>撮影'],['shapes','スチール・<br>SNS撮影'],['bldg','企業研修・<br>イベント'],['store','マルシェ・<br>ワークショップ']],
+   items:[['camera','360°<br>フォレストビュー'],['sprout','四季で異なる<br>表情'],['shapes','統一感のある<br>施設デザイン'],['house','天然木デッキ・<br>車両乗り入れ可']],
    card:'自社で企画・運営するキャンプ複合施設「Render Fika Sammu」は、ロケ地・撮影・イベント会場としてもご利用いただけます。',btn:'ロケ・撮影のご相談'},
 ]});
 defTour(4,{I:ISL.web,sec:'web',veh:'ev',start:WEBR.tour.start,startDir:WEBR.tour.dir,end:WEBR.tour.end,endGo:'マリーナへ。お客様とクルーズへ',welcome:'自動運転でご案内します。',spots:[
   {t:'WEBサイト・広告',en:'WEB & ADS',icon:'browser',f:WEBR.tour.f[0],legs:WEBR.tour.legs[0],go:'WEBサイトの広場へ',
-   items:[['browser','サイト制作・<br>LP'],['phone','SNS・<br>WEB広告'],['chart','SEO・MEO<br>対策'],['shapes','ブランディング']]},
+   items:[['browser','WEBサイト・<br>LP制作'],['phone','広告・<br>SNS運用'],['chart','SEO対策・<br>ライティング'],['wrench','公開後の保守・<br>運用改善']]},
   {t:'予約・アプリ開発',en:'BOOKING & APP',icon:'phone',f:WEBR.tour.f[1],legs:WEBR.tour.legs[1],go:'巨大スマホへ',
-   items:[['plan','予約システム<br>構築'],['phone','会員・EC<br>アプリ'],['doc','CRM・<br>顧客管理'],['cube','決済・<br>外部連携']]},
-  {t:'スマート施設管理<br>（IoT）',en:'SMART FACILITY',icon:'lock',sm:1,f:WEBR.tour.f[2],legs:WEBR.tour.legs[2],go:'スマートロックの小屋へ',
-   items:[['lock','スマート<br>ロック'],['wifi','センサー・<br>遠隔監視'],['phone','無人<br>チェックイン'],['bulb','照明・空調の<br>省エネ制御']]},
-  {t:'データ活用',en:'DATA',icon:'data',f:WEBR.tour.f[3],legs:WEBR.tour.legs[3],go:'データセンターへ',
-   items:[['chart','予約・売上<br>分析'],['grid','ダッシュボード<br>構築'],['bulb','需要予測・<br>価格最適化'],['doc','レポート<br>自動化']],
+   items:[['plan','独自の予約・<br>事前決済システム'],['cube','OTA一元管理<br>連携'],['store','ECサイト<br>構築・運用'],['phone','オリジナル<br>アプリ開発']]},
+  {t:'スマート施設管理・<br>データ活用',en:'SMART FACILITY & DATA',icon:'lock',sm:1,f:WEBR.tour.f[3],legs:[...WEBR.tour.legs[2],...WEBR.tour.legs[3].slice(1)],go:'スマートロックの小屋からデータセンターへ',
+   items:[['lock','スマートロック・<br>顔認証'],['phone','非対面<br>チェックイン'],['bulb','AIカメラ・<br>省エネ制御'],['chart','売上・稼働率の<br>見える化']],
    card:'集客から予約・運営まで、施設のデータをひとつに。数字で見える化して、次の一手を一緒に考えます。'},
 ]});
 
@@ -2502,7 +2677,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;const t=RM?1
   ctx.globalAlpha=1-ia;ctx.fillStyle='#56889a';ctx.fillRect(0,0,W,H);
   const gr=ctx.createRadialGradient(W*.6,H*.45,50,W*.6,H*.5,Math.max(W,H)*.8);gr.addColorStop(0,'rgba(170,200,205,.22)');gr.addColorStop(1,'rgba(60,95,110,.2)');ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
   if(ia>0){const sc=Math.max(W/SEAIMG.naturalWidth,H/SEAIMG.naturalHeight);ctx.globalAlpha=ia;ctx.drawImage(SEAIMG,(W-SEAIMG.naturalWidth*sc)/2,(H-SEAIMG.naturalHeight*sc)/2,SEAIMG.naturalWidth*sc,SEAIMG.naturalHeight*sc)}ctx.globalAlpha=1}
-  if(HEROU>0){const gw=ctx.createLinearGradient(0,0,W*.55,0);gw.addColorStop(0,`rgba(28,52,46,${.22*HEROU})`);gw.addColorStop(1,'rgba(28,52,46,0)');ctx.fillStyle=gw;ctx.fillRect(0,0,W,H)}
+  if(false&&HEROU>0){const gw=ctx.createLinearGradient(0,0,W*.55,0);gw.addColorStop(0,`rgba(28,52,46,${.22*HEROU})`);gw.addColorStop(1,'rgba(28,52,46,0)');ctx.fillStyle=gw;ctx.fillRect(0,0,W,H)}
   ctx.setTransform(DPR*z,0,0,DPR*z,DPR*(sx-cx*z),DPR*(sy-cy*z));
   const view={x0:cx-sx/z,x1:cx+(W-sx)/z,y0:cy-sy/z,y1:cy+(H-sy)/z};
   const g=ctx;g.lineCap='round';g.lineJoin='round';
@@ -2611,18 +2786,17 @@ function updatePins(k,op,T){if(!PINS){if(typeof TOURS==='undefined'||!TOURS[2]||
     P.e.style.opacity=o.toFixed(2);P.e.firstChild.style.pointerEvents=o>.5?'auto':'none'}}
 const SECN={2:'dev',3:'stay',4:'web'};
 const CASES={
- 2:[{tag:'プロジェクト A',t:'暮らしと仕事が溶け合う複合施設',d:'土地活用の企画から設計・施工までをワンストップで対応。地域の資源を活かした場づくりで、暮らしと仕事が自然に溶け合う複合施設を実現しました。事業計画の段階から運営まで見据えたご提案で、長く愛される空間をかたちにします。',img:'assets/land.jpg'},
-    {tag:'プロジェクト B',t:'まちに開かれた住宅・店舗',d:'住まいと店舗が同居する計画。動線と素材にこだわり、使うほどに味わいが増す空間に仕上げています。まちに開かれた佇まいで、ご家族の暮らしとお店の営みが無理なく両立するよう、設計から施工まで一貫して担当しました。',img:'assets/tent.jpg'},
-    {tag:'プロジェクト C',t:'居心地を設計するオフィス',d:'働く人の行動を観察し、集中と交流のバランスをデザイン。リフォームから内装まで一貫して担当しました。居心地や使い勝手まで見据えたご提案で、チームの力が自然と引き出されるオフィスづくりをお手伝いします。',img:'assets/basket.jpg'},
-    {tag:'プロジェクト D',t:'眺望を活かした土地活用',d:'傾斜地の特性を読み解き、事業計画と建築を同時に進行。収益性と景観を両立させました。眺望を最大限に活かす配置計画と、周辺環境に調和するデザインで、土地の価値そのものを引き上げています。',img:'assets/coffee.jpg'}],
- 3:[{tag:'プロジェクト A',t:'五感を解き放つ隠れ家スパ',d:'サウナや露天風呂、囲炉裏、キャンプ場のような庭――日常の中に非日常のアウトドア体験を取り入れる住宅設計も可能です。自社でアウトドア施設を実際に運営しているからこそわかる、居心地や使い勝手までを見据えたご提案で、思い描く空間をかたちにします。',img:'assets/build.jpg'},
-    {tag:'プロジェクト B',t:'焚き火を囲むグランピング',d:'事業計画から開業、運営代行まで一貫して担当。焚き火を囲む時間を軸に、滞在体験を一つひとつ設計しました。自社運営のノウハウを活かした改善で、稼働率と客単価の両面で成果につなげています。',img:'assets/fire.jpg'},
-    {tag:'プロジェクト C',t:'カフェ併設の小さな宿',d:'自社運営のノウハウを活かし、メニューから導線まで設計。カフェを入口に地域の人と宿泊客が自然に交わる、小さな宿を形にしました。日々の運営まで伴走し、地域に愛される拠点へと育てています。',img:'assets/coffee.jpg'},
-    {tag:'プロジェクト D',t:'ペットと泊まれる貸別荘',d:'ペット同伴ニーズに合わせた設備と運用ルールを整備し、リピーターが増える施設へ。愛犬と過ごす時間を最優先に、動線や素材、清掃体制まで見直し、安心して長く滞在できる貸別荘に仕上げました。',img:'assets/dog.jpg'}],
- 4:[{tag:'プロジェクト A',t:'予約から決済までを自動化',d:'自社予約システムを構築し、問い合わせ対応の手間を大幅に削減。予約から決済、リマインドまでを自動化し、スタッフがおもてなしに集中できる運営体制を実現しました。',img:'assets/web.jpg'},
-    {tag:'プロジェクト B',t:'スマートロックで無人運営',d:'チェックインを非接触化し、スタッフの負担を軽減。IoT機器の選定から導入、運用ルールの整備まで対応し、少人数でも安定して運営できる施設づくりを支援しました。',img:'assets/lock.jpg'},
-    {tag:'プロジェクト C',t:'データで磨く施設運営',d:'稼働と売上を可視化するダッシュボードを構築。改善の打ち手を数字で判断できるようにし、日々の運営の中で小さな改善を積み重ねられる仕組みを整えました。',img:'assets/dash.jpg'},
-    {tag:'プロジェクト D',t:'ECと連動した体験ショップ',d:'施設で人気の商品をオンラインでも販売。サイト制作から広告運用まで一貫して支援し、宿泊体験の余韻をそのまま届ける、体験とつながるショップを立ち上げました。',img:'assets/basket.jpg'}]};
+ 2:[{tag:'商業施設｜提案例',t:'滞在型ラウンジ商業施設の事業企画',d:'食事だけでなく「過ごす時間」に価値を置いた商業施設を企画。コンセプトから収支計画、開業までの進行管理をご提案します。',can:'構想段階からのご相談もOK。コンセプト立案、収支計画、開業までの進行管理を一括で対応します。',img:'assets/land.jpg'},
+    {tag:'土地活用｜実績',t:'森林を活かしたアウトドア施設への土地活用',d:'千葉県山武市の森林を、キャンプ・サウナを備えた複合施設として収益化。用地選定から事業化まで自社で手がけました。',can:'活用方法が決まっていなくてもご相談いただけます。用地選定から事業化、テナント誘致まで対応します。',img:'assets/tent.jpg'},
+    {tag:'飲食店｜実績',t:'チェーン飲食店の店舗内装・施工',d:'ブランドの世界観を守りながら、各店舗の立地に合わせて内装を設計。複数店舗のデザインから施工まで担当しました。',can:'設計から施工、アフターサポートまで窓口は一つ。新築・リノベーション、複数店舗の展開にも対応します。',img:'assets/basket.jpg'},
+    {tag:'住宅｜提案例',t:'現代風囲炉裏を楽しむくつろぎの住まい',d:'囲炉裏リビングを中心に、BBQやペットとの時間がつながる住まい。家族が自然と集まる、ホテルライクな住宅デザインです。',can:'住まい・店舗・オフィスなど、規模や用途を問わず対応。ホテルライクな空間づくりもご相談ください。',img:'assets/coffee.jpg'}],
+ 3:[{tag:'一棟貸し｜提案例',t:'森に佇む一棟貸しヴィラの企画',d:'コンセプト立案から土地の仕入れ、意匠設計、家具・備品の選定、運営体制づくりまで一貫して計画しました。',can:'宿泊施設の企画をゼロから対応。ブランド設計から開業準備まで、一貫してご相談いただけます。',img:'assets/build.jpg'},
+    {tag:'宿泊施設｜提案例',t:'既存宿の稼働改善プラン',d:'予約データと口コミを分析し、料金設定・OTAでの見せ方・接客を見直し。数字で効果を確かめながら改善を重ねます。',can:'現状診断から改善の実行まで伴走。予約媒体の運用やスタッフ研修も対応します。',img:'assets/fire.jpg'},
+    {tag:'キャンプ・グランピング｜実績',t:'Render Fika Sammu の運営',d:'森に囲まれたキャンプ・グランピング施設を自社で運営。貸切サウナやカフェ、地元食材を使った食事まで、滞在体験をつくり続けています。',can:'自社運営で培ったノウハウを、企画・運営の両面でご提供します。',img:'assets/coffee.jpg'},
+    {tag:'撮影・イベント｜実績',t:'森をまるごと使う撮影・イベント',d:'都心から車で約90分、360°森に囲まれたフィールド。CM・MV撮影からヨガリトリート、企業研修まで、宿泊を伴う利用にも対応しています。',can:'撮影・イベントでの貸出に対応。宿泊を伴うご利用もご相談ください。',img:'assets/dog.jpg'}],
+ 4:[{tag:'WEB｜実績',t:'老舗チョコレートブランドのWEB・販促デザイン',d:'新作コレクションに合わせて、WEBサイトから売場の什器、パッケージまでデザイン。オンラインと店頭で世界観をそろえました。',can:'サイト制作から広告・SNS運用、公開後の改善まで対応。販促物のデザインもご相談ください。',img:'assets/web.jpg'},
+    {tag:'システム｜実績',t:'アウトドア施設のWEBサイト・予約導線',d:'施設の世界観を伝えるWEBサイトと、予約サービスへの導線を一体で設計。スマホひとつで空き確認から予約まで完結します。',can:'予約・決済の仕組みづくりから、OTAとの連携、ECやアプリの開発まで対応します。',img:'assets/lock.jpg'},
+    {tag:'DX｜提案例',t:'省人化を見据えた施設DX',d:'顔認証やスマートロック、POSを組み合わせ、チェックインから会計までを省人化。売上や稼働状況もひとつの画面で確認できます。',can:'導入工事まで対応。CRMやレポートの自動化など、運営のデータ活用もご相談いただけます。',img:'assets/dash.jpg'}]};
 const CS={sec:null,from:0,idx:-1};const csEl=$('#cases');function csRender(from,i){const c=CASES[from][i];csEl.classList.add('sw');setTimeout(()=>{$('.cs-img img',csEl).src=c.img;$('.cs-tag',csEl).textContent=c.tag;$('.cs-t',csEl).textContent=c.t;$('.cs-d',csEl).textContent=c.d;
   $('.cs-n',csEl).textContent=String(i+1).padStart(2,'0')+' / '+String(CASES[from].length).padStart(2,'0');csEl.classList.remove('sw')},CS.idx<0?0:260)}
 function csGo(d){if(!CS.from)return;const n=CASES[CS.from].length,i=(CS.idx+d+n)%n;CS.idx=i;csRender(CS.from,i)}
@@ -2682,7 +2856,7 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
   const cv=document.createElement('canvas');cv.id='heroCv';cv.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none;display:block';
   const wcv=document.getElementById('world');wcv.parentNode.insertBefore(cv,wcv.nextSibling);let g=cv.getContext('2d');let VEC=null;const LAYER=n=>{if(!VEC)return;const c=VEC.mk();c.lineCap='butt';c.lineJoin='miter';VEC.layers.push([n,c]);g=c};
   let W=0,H=0,dpr=1,T0=performance.now();
-  const ORDER=[['shop','01','商業店舗'],['office','02','オフィス'],['home','03','住居'],['camp','04','キャンプ'],['event','05','イベント'],['hotel','06','ホテル・旅館'],['dx','07','DX'],['web','08','WEB']],NI=ORDER.length,STEP=TAU/NI;
+  const ORDER=[['shop','01','商業店舗'],['office','02','オフィス'],['home','03','住居'],['camp','04','キャンプ'],['event','05','イベント'],['hotel','06','ホテル・旅館'],['dx','07','DX'],['web','08','WEB']],NI=ORDER.length;let STEP=TAU/NI,IK=1,ISLC=0,LX=0,ARCH=0,MI_=0;
   /* ---------- island sprites (rendered from the real islands) ---------- */
   const SPR={};let sprIdx=0,sprT=-1;
   function renderSprite(k,t){const I=ISL[k],bb=I.bb,sc=.55,w=Math.ceil((bb.x1-bb.x0)*sc),h=Math.ceil((bb.y1-bb.y0)*sc);let s=SPR[k];if(!s){s=document.createElement('canvas');s.width=w;s.height=h;SPR[k]=s}
@@ -2699,11 +2873,21 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
     poly(g,[[-14,-1],[6,-20],[18,-20],[8,-1]],'#e4e8ea');if(IMG.markw&&IMG.markw.complete){ell(g,-60,-18,7.5,7.5,G);g.drawImage(IMG.markw,-67,-25,14,14)}
     if(IMG.logo&&IMG.logo.complete)g.drawImage(IMG.logo,-22,-4.6,40,40*124/900);g.restore()}
   const CL=[];{const q=rng(31);for(let k=0;k<7;k++)CL.push({x:q(),y:.06+q()*.3,s:.7+q()*.7,v:.006+q()*.01,n:3+(q()*3|0),seed:q()*99})}
-  function cloud(c,t,S){const x=(mod(c.x-t*c.v*1.6,1.3)-.15)*W,y=c.y*H,s=c.s*S;const q=rng(c.seed*100|0);const bl=[];for(let k=0;k<c.n;k++)bl.push([x+(k-(c.n-1)/2)*22*s,y-(k%2?9:2)*s-q()*6*s,(14+q()*11)*s]);
-    g.fillStyle='rgba(150,190,200,.45)';g.beginPath();for(const[a,b,r_]of bl){g.moveTo(a+r_,b+4*s);g.arc(a,b+4*s,r_,0,TAU)}g.fill();g.fillStyle='rgba(225,240,242,.95)';g.beginPath();for(const[a,b,r_]of bl){g.moveTo(a+r_,b);g.arc(a,b,r_,0,TAU)}g.fill()}
+  function cloud(c,t,S){const x=(mod(c.x-t*c.v*1.6,1.3)-.15)*W,y=c.y*H,s=c.s*S;const q=rng(c.seed*100|0);
+    // flat-bottomed storybook cloud: a big centre puff, smaller puffs stepping down to both sides
+    const n=Math.max(2,c.n),bl=[];for(let k=0;k<n;k++){const u=n>1?k/(n-1)*2-1:0,r_=(26-14*Math.abs(u)+q()*3)*s;bl.push([x+u*(n*11+6)*s,-r_*.62,r_])}
+    const wd=(n*11+6)*s+bl[0][2]*.55,base=y;
+    const paint=(dy,fill)=>{g.fillStyle=fill;g.beginPath();for(const[a,b,r_]of bl){g.moveTo(a+r_,base+b+dy);g.arc(a,base+b+dy,r_,0,TAU)}
+      g.moveTo(x-wd+10*s,base+dy);g.lineTo(x-wd+10*s,base+dy-22*s);g.lineTo(x+wd-10*s,base+dy-22*s);g.lineTo(x+wd-10*s,base+dy);g.closePath();g.fill()};
+    // same look as the islands: mottled paper fill, thin edge line, flat shadow, no highlight
+    g.save();g.beginPath();g.rect(x-wd*2,base-200*s,wd*4,200*s);g.clip();
+    paint(4*s,'rgba(120,160,172,.30)');
+    g.save();g.lineJoin='round';g.strokeStyle='rgba(30,35,30,.24)';g.lineWidth=1.6;g.beginPath();for(const[a,b,r_]of bl){g.moveTo(a+r_,base+b);g.arc(a,base+b,r_,0,TAU)}g.stroke();g.restore();
+    paint(0,texPat(g,'#eaf3f3',true));
+    g.restore()}
   function gull(x,y,t,k,s){const f=Math.sin(t*6+k)*4*s;g.strokeStyle='#f6f6f2';g.lineWidth=1.8*s;g.beginPath();g.moveTo(x-8*s,y-f);g.quadraticCurveTo(x-3*s,y-5*s,x,y);g.quadraticCurveTo(x+3*s,y-5*s,x+8*s,y-f);g.stroke()}
   /* ---------- globe geometry ---------- */
-  function geo(q,bt){const mob=W<820,R0=mob?W*.95:Math.max(W*.6,H*.82),top0=H*(mob?.5:.42);const Rs=Math.min(W,H)*.3,ez=easeIO(clamp((bt-2.7)/2.1));
+  function geo(q,bt){const mob=W<820,R0=mob?W*.95:Math.max(W*.6,H*.82),top0=H*(mob?.5:.42);const Rs=Math.min(W,H)*.3,ez=1;
     const Rz=Math.exp(lerp(Math.log(Rs),Math.log(R0),ez)),cz=lerp(H*.52,top0+R0,ez);const e=easeIO(q);const R=Rz*(1+e*2.4),top=lerp(cz-Rz,-H*.25,e);return{R,cx:W/2,cy:top+R,R0:Rz,ez}}
   function seaFill(){if(SEAIMG.complete&&SEAIMG.naturalWidth){const sc=Math.max(W/SEAIMG.naturalWidth,H/SEAIMG.naturalHeight);g.drawImage(SEAIMG,(W-SEAIMG.naturalWidth*sc)/2,(H-SEAIMG.naturalHeight*sc)/2,SEAIMG.naturalWidth*sc,SEAIMG.naturalHeight*sc)}else{g.fillStyle=PAL.sea;g.fillRect(0,0,W,H)}}
   /* ---------- draw ---------- */
@@ -2713,8 +2897,8 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
   let PASS='real',XB=0,XC=0,WILDA=0;
   const WISH=['街に愛される、お店をつくりたい。','人が集まる、オフィスにしたい。','家族が帰りたくなる、家を。','森の中に、キャンプ場をつくりたい。','人が集まる場を、企画したい。','選ばれる宿に、生まれ変わりたい。','現場の手間を、なくしたい。','想いが届く、サイトにしたい。'];
   // boundary = straight under the plane (12 o'clock). Right: plan (CAD) / left: realised. Things build up as they pass, like a time-lapse.
-  function ISLANDS(t,bt,q,o){const{R,cx,cy,R0,rot,S,ISLBLK,LBLQ}=o,aL=-Math.PI/2,on=ss(4.4,5.6,bt)*(1-ss(.1,.5,q)),pon=ss(1.5,2.6,bt)*(1-ss(.1,.5,q)),real=g;WILDA=TESTM&&bt>=90?0:ss(1.8,2.8,bt)*(1-ss(4.6,5.6,bt));
-    LAYER('03b_island_names');ISLNAMES(t,bt,q,{R,cx,cy,rot,S});
+  function ISLANDS(t,bt,q,o){const{R,cx,cy,R0,rot,S,ISLBLK,LBLQ}=o,aL=-Math.PI/2+clamp(LX/R,-2,2),on=ss(1.2,2.0,bt)*(1-ss(.1,.5,q)),pon=ss(.4,1.1,bt)*(1-ss(.1,.5,q)),real=g;WILDA=TESTM&&bt>=90?0:ss(1.8,2.8,bt)*(1-ss(4.6,5.6,bt));
+    LAYER('03b_island_names');
     LAYER('04_plan_grid');
     if(on>0){// polar drafting grid that fades in towards the right – no hard edge
       const fa=a=>ss(aL+.04,aL+.34,a)*(1-ss(aL+1.05,aL+1.35,a));g.save();g.strokeStyle='#ffffff';g.lineWidth=1;
@@ -2728,28 +2912,24 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
     LAYER('06_islands_REAL');PASS='real';ISLBLK();
     // build sparks where plan turns into reality (under the plane)
     LAYER('07_build_sparks');
-    if(on>0){g.save();for(let k=0;k<18;k++){const u=mod(t*.45+k/18,1),a=aL+.012+Math.sin(k*12.9)*.045,r_=R+6*S+u*70*S;g.globalAlpha=on*Math.sin(u*Math.PI)*.85;ell(g,cx+Math.cos(a)*r_,cy+Math.sin(a)*r_,(1.4+(k%3)*.7)*S*1.4,(1.4+(k%3)*.7)*S*1.4,k%3?'#fff3c4':'#e9c46a')}g.restore()}
+    if(false){g.save();for(let k=0;k<18;k++){const u=mod(t*.45+k/18,1),a=aL+.012+Math.sin(k*12.9)*.045,r_=R+6*S+u*70*S;g.globalAlpha=on*Math.sin(u*Math.PI)*.85;ell(g,cx+Math.cos(a)*r_,cy+Math.sin(a)*r_,(1.4+(k%3)*.7)*S*1.4,(1.4+(k%3)*.7)*S*1.4,k%3?'#fff3c4':'#e9c46a')}g.restore()}
     // client wish: floats above the island that is still a plan
     LAYER('08_wish_bubble');
-    if(on>0){g.save();g.font='700 14px "Zen Kaku Gothic New", sans-serif';for(let i=0;i<NI;i++){let an=-Math.PI/2+rot+i*STEP;an=((an-aL)%TAU+TAU)%TAU+aL;const vis=ss(aL+.16,aL+.36,an)*(1-ss(aL+.62,aL+.8,an))*on;if(vis<=0)continue;
+    if(false&&on>0){g.save();g.font='700 14px "Zen Kaku Gothic New", sans-serif';for(let i=0;i<NI;i++){let an=-Math.PI/2+rot+i*STEP;an=((an-aL)%TAU+TAU)%TAU+aL;const vis=ss(aL+.06,aL+.16,an)*(1-ss(aL+.2,aL+.3,an))*on;if(vis<=0)continue;
         const txt=WISH[i],tw=g.measureText(txt).width+30,rr0=R+(W<820?95:170)*S;let x=cx+Math.cos(an)*rr0,y=cy+Math.sin(an)*rr0-28;x=Math.min(W-tw/2-14,Math.max(tw/2+14,x));y=Math.max(78,y);if(W<820){x=W-tw/2-12;y=cy-R-118}
         g.globalAlpha=vis;g.fillStyle='rgba(20,40,50,.12)';rr(g,x-tw/2+2,y-18,tw,40,20);g.fill();g.fillStyle='rgba(255,255,255,.97)';rr(g,x-tw/2,y-20,tw,40,20);g.fill();g.beginPath();g.moveTo(x-8,y+19);g.lineTo(x-14,y+31);g.lineTo(x+2,y+19);g.fill();
         g.fillStyle='#2e4429';g.textAlign='center';g.fillText(txt,x,y+5);g.font='700 10px "Zen Kaku Gothic New", Jost';g.fillStyle='#c8962a';g.textAlign='left';g.fillText('CLIENT’S WISH',x-tw/2+14,y-27);g.font='700 14px "Zen Kaku Gothic New", sans-serif'}
       g.textAlign='left';g.restore()}
     LBLQ.length=0;
-    // intro captions: 未開の地 → 構想 (then the copy takes over: 体験)
-    {const ph=[[1.6,3.6,'PHASE 00','未開の地','UNDEVELOPED LAND'],[3.8,5.5,'PHASE 01','構想を描く','PLANNING']];g.save();g.textAlign='center';
-      for(const[a0,a1,nn,ja,en]of ph){const al=ss(a0,a0+.4,bt)*(1-ss(a1-.4,a1,bt));if(al<=0||TESTM&&bt>=90)continue;const y=H*.5;g.globalAlpha=al;g.fillStyle='#f3d68a';g.font='600 11px Jost';g.fillText(nn+'  ／  '+en,W/2,y-22);g.fillStyle='#fff';g.font='900 '+(W<820?22:30)+'px "Zen Kaku Gothic New", sans-serif';g.fillText(ja,W/2,y+12);
-        g.strokeStyle='rgba(255,255,255,.7)';g.lineWidth=1;g.beginPath();g.moveTo(W/2-60,y+28);g.lineTo(W/2+60,y+28);g.stroke()}
-      g.restore()}}
+  }
   // island names: a soft halo + big curved name sitting faintly behind each island
-  function ISLNAMES(t,bt,q,o){const{R,cx,cy,rot,S}=o,al0=ss(5.6,6.6,bt)*(1-ss(0,.3,q));if(al0<=0)return;const mob=W<820,fs=Math.max(mob?17:22,(mob?34:40)*S),rn=R+(mob?150:175)*S;
-    for(let i=0;i<NI;i++){const an=-Math.PI/2+rot+i*STEP,yy=cy+Math.sin(an)*rn,aw=((an+Math.PI/2)%TAU+TAU+Math.PI)%TAU-Math.PI,aw0=aw+(PH-PH0)*STEP,va=(1-ss(-.06,.1,aw))*ss(-.62,-.4,aw)*ss(-.06,0,aw0)*ss(0,.25,(PH-PH0)*STEP-(-aw0>0?0:0));if(yy>H+80||Math.sin(an)>.2||va<=0)continue;const [k,n,ja]=ORDER[i];
+  function ISLNAMES(t,bt,q,o){const{R,cx,cy,rot,S}=o,al0=ss(5.6,6.6,bt)*(1-ss(0,.3,q));if(al0<=0)return;const mob=W<820,fs=Math.max(mob?9:14,(mob?34:40)*S*IK*.9),rn=R+(mob?95:175)*S*(mob?1:IK*1.9);
+    for(let i=0;i<NI;i++){const an=-Math.PI/2+rot+i*STEP,yy=cy+Math.sin(an)*rn,va=ss(-60*S,200*S,LX-(i-(NI-1)/2)*STEP*R);if(yy>H+80||va<=0)continue;const [k,n,ja]=ORDER[i];
       // halo
-      const hx=cx+Math.cos(an)*(R+90*S),hy=cy+Math.sin(an)*(R+90*S),hr=(mob?120:170)*S;const gr=g.createRadialGradient(hx,hy,0,hx,hy,hr);gr.addColorStop(0,'rgba(255,255,255,.26)');gr.addColorStop(.6,'rgba(255,255,255,.10)');gr.addColorStop(1,'rgba(255,255,255,0)');g.save();g.globalAlpha=al0*va;g.fillStyle=gr;g.beginPath();g.arc(hx,hy,hr,0,TAU);g.fill();
+      const hx=cx+Math.cos(an)*(R+90*S),hy=cy+Math.sin(an)*(R+90*S),hr=(mob?120:170)*S*IK*1.8;const gr=g.createRadialGradient(hx,hy,0,hx,hy,hr);gr.addColorStop(0,'rgba(255,255,255,.26)');gr.addColorStop(.6,'rgba(255,255,255,.10)');gr.addColorStop(1,'rgba(255,255,255,0)');g.save();g.globalAlpha=al0*va;g.fillStyle=gr;g.beginPath();g.arc(hx,hy,hr,0,TAU);g.fill();
       // curved text along the globe
-      const txt=ja;g.font='900 '+fs+'px "Zen Kaku Gothic New", sans-serif';const ws=[...txt].map(c=>g.measureText(c).width+fs*.18);const tot=ws.reduce((a,b)=>a+b,0);let a=an-tot/2/rn;
-      g.fillStyle='rgba(255,255,255,.5)';g.textAlign='center';for(let j=0;j<ws.length;j++){const am=a+ws[j]/2/rn;g.save();g.translate(cx+Math.cos(am)*rn,cy+Math.sin(am)*rn);g.rotate(am+Math.PI/2);g.fillText([...txt][j],0,0);g.restore();a+=ws[j]/rn}
+      const txt=mob?n:ja;g.font='900 '+fs+'px "Zen Kaku Gothic New", sans-serif';const ws=[...txt].map(c=>g.measureText(c).width+fs*.18);const tot=ws.reduce((a,b)=>a+b,0);let a=an-tot/2/rn;
+      g.fillStyle='rgba(255,255,255,.95)';g.strokeStyle='rgba(46,68,41,.45)';g.lineWidth=3;g.lineJoin='round';g.textAlign='center';for(let j=0;j<ws.length;j++){const am=a+ws[j]/2/rn;g.save();g.translate(cx+Math.cos(am)*rn,cy+Math.sin(am)*rn);g.rotate(am+Math.PI/2);g.strokeText([...txt][j],0,0);g.fillText([...txt][j],0,0);g.restore();a+=ws[j]/rn}
       // number on the arc above
       const rn2=rn+fs*.95;g.font='600 '+Math.round(fs*.42)+'px Jost';g.fillStyle='rgba(200,150,42,.85)';const nt=n+'  ISLAND';const nw=[...nt].map(c=>g.measureText(c).width+fs*.08);let b=an-nw.reduce((x,y)=>x+y,0)/2/rn2;for(let j=0;j<nw.length;j++){const am=b+nw[j]/2/rn2;g.save();g.translate(cx+Math.cos(am)*rn2,cy+Math.sin(am)*rn2);g.rotate(am+Math.PI/2);g.fillText([...nt][j],0,0);g.restore();b+=nw[j]/rn2}
       g.restore()}}
@@ -2764,17 +2944,20 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
   window.__GS_VEC=(mk,t)=>{const og=g,ow=W,oh=H,od=dpr;VEC={mk,layers:[]};dpr=1;window.__NOTEX=true;
     try{draw(t,99,0);LAYER('10_plane');const S=Math.max(W*.6,H*.82)/700;plane(t,W*.5,H*.2+Math.sin(t*1.1)*4,S*.95,1)}finally{g=og;dpr=od;window.__NOTEX=false}
     const L=VEC.layers;VEC=null;return L.map(([n,c])=>[n,c.getSerializedSvg(true)])};
-  function draw(t,bt,q){const{R,cx,cy,R0,ez}=geo(q,bt),S=R0/700,rot=-PH*STEP+(+(new URLSearchParams(location.search).get('rot'))||0)*Math.PI/180;const fillA=ss(1.3,2.5,bt),objA=ss(4.6,5.6,bt);
+  function draw(t,bt,q){const{R,cx,cy,R0,ez}=geo(q,bt),S=R0/700,rot=-PH*STEP+(+(new URLSearchParams(location.search).get('rot'))||0)*Math.PI/180;ARCH=4*STEP*R;LX=TESTM&&bt>=90?1e9:lerp(-ARCH-140*S,ARCH+260*S,ss(2.2,5,bt));const fillA=ss(.2,.9,bt),objA=ss(1.2,2.0,bt);
     LAYER('01_sky');// sky
-    const sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#a9cdd6');sky.addColorStop(.55,'#c4e0e3');sky.addColorStop(1,'#d9ecea');g.fillStyle=sky;g.globalAlpha=1-ss(.1,.45,q);g.fillRect(0,0,W,H);g.globalAlpha=1;
-    if(bt<2.8){g.save();g.globalAlpha=1-ss(1.6,2.8,bt);g.fillStyle='#5f8fa3';g.fillRect(0,0,W,H);g.strokeStyle='rgba(255,255,255,.12)';for(let x=0;x<W;x+=40){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=0;y<H;y+=40){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}g.restore()}
-    LAYER('02_clouds_orbit');g.save();g.globalAlpha=fillA*(1-ss(.3,.8,q));for(const c of CL)cloud(c,t,S*1.1);g.restore();
+    g.save();g.beginPath();g.rect(0,0,W,H);g.arc(cx,cy,Math.max(1,R-1),0,TAU);g.clip('evenodd');// sky, clouds and rings only outside the globe, so nothing ghosts through the fading sea
+    const sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#a9cdd6');sky.addColorStop(.55,'#c4e0e3');sky.addColorStop(1,'#d9ecea');g.fillStyle=sky;g.globalAlpha=1;g.fillRect(0,0,W,H);g.globalAlpha=1;
+    {g.save();g.globalAlpha=(1-ss(.1,.5,q))*(TESTM&&bt>=90?0:1-ss(2.2,5,bt));g.fillStyle='#3f7191';g.fillRect(0,0,W,H);g.strokeStyle='rgba(255,255,255,.16)';for(let x=0;x<W;x+=40){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=0;y<H;y+=40){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}g.restore()}
+    if(false){g.save();g.globalAlpha=1-ss(1.6,2.8,bt);g.fillStyle='#5f8fa3';g.fillRect(0,0,W,H);g.strokeStyle='rgba(255,255,255,.12)';for(let x=0;x<W;x+=40){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=0;y<H;y+=40){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}g.restore()}
+    LAYER('02_clouds_orbit');g.save();g.globalAlpha=fillA*(TESTM&&bt>=90?1:.12+.88*ss(2.2,5,bt));for(const c of CL)cloud(c,t,S*1.1);g.restore();
     // orbit route rings
-    g.save();g.globalAlpha=.55*fillA*(1-ss(0,.4,q));g.setLineDash([10,12]);g.lineDashOffset=-t*8;g.strokeStyle='rgba(255,255,255,.7)';g.lineWidth=1.6;g.beginPath();g.arc(cx,cy,R*1.14,0,TAU);g.stroke();g.setLineDash([3,9]);g.beginPath();g.arc(cx,cy,R*1.3,0,TAU);g.stroke();g.restore();
+    g.save();g.globalAlpha=.55*fillA;g.setLineDash([10,12]);g.lineDashOffset=-t*8;g.strokeStyle='rgba(255,255,255,.7)';g.lineWidth=1.6;g.beginPath();g.arc(cx,cy,R*1.14,0,TAU);g.stroke();g.setLineDash([3,9]);g.beginPath();g.arc(cx,cy,R*1.3,0,TAU);g.stroke();g.restore();
+    g.restore();
     LAYER('03_globe_sea_boats');// globe sea (texture continuous with the map below)
     g.save();g.beginPath();g.arc(cx,cy,R,0,TAU);g.clip();g.globalAlpha=fillA*(1-ss(.55,1,q));seaFill();
     // boats riding the turning sea
-    g.globalAlpha=fillA*(1-ss(.2,.7,q));
+    g.globalAlpha=fillA*(1-ss(.5,1,q));
     const boat=(a,rr_,kind,k)=>{const an=a+rot,x=cx+Math.cos(an)*R*rr_,y=cy+Math.sin(an)*R*rr_;if(y>H+40||y<-40)return;const s=S*1.2;const cz=Math.max(Math.abs(x-W/2)/(W*.24),Math.abs(y-H*.66)/(H*.17));if(cz<1.15)return;g.save();g.translate(x,y);g.rotate(an+Math.PI/2);g.globalAlpha*=objA*Math.min(1,(cz-1.15)/.45);
       ell(g,0,4*s,24*s,4*s,'rgba(255,255,255,.45)');if(kind==='sail'){g.fillStyle='#f4f2ec';g.beginPath();g.moveTo(-16*s,0);g.lineTo(16*s,0);g.lineTo(11*s,6*s);g.lineTo(-11*s,6*s);g.fill();g.fillStyle=k%2?'#f3c54a':'#f6f3ea';g.beginPath();g.moveTo(1,-2);g.lineTo(1,-42*s);g.lineTo(20*s,-4*s);g.fill();g.fillStyle='#e9eef0';g.beginPath();g.moveTo(-1,-5*s);g.lineTo(-1,-34*s);g.lineTo(-14*s,-5*s);g.fill()}
       else if(kind==='surf'){ell(g,0,1*s,14*s,3*s,M);g.fillStyle=G;g.beginPath();g.moveTo(0,-2*s);g.lineTo(0,-34*s);g.lineTo(16*s,-6*s);g.fill();person(g,-3*s,0,{c:'#f4f2ec',k:SKIN[1],h:HAIR[0],sc:s,arms:'one'},t)}
@@ -2782,43 +2965,65 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
     boat(-1.9,.86,'sail',0);boat(-1.35,.8,'surf',1);boat(-.95,.88,'surf',2);boat(-.45,.82,'sail',3);boat(.6,.84,'ferry',4);boat(2.2,.85,'sail',5);boat(2.9,.83,'ferry',6);boat(1.6,.86,'surf',7);
     g.restore();
     // foam rim
-    g.save();g.globalAlpha=fillA*(1-ss(.2,.6,q));g.strokeStyle='rgba(255,255,255,.85)';g.lineWidth=3;g.setLineDash([16,10]);g.lineDashOffset=-t*12;g.beginPath();g.arc(cx,cy,R+2,0,TAU);g.stroke();g.setLineDash([]);g.strokeStyle='rgba(255,255,255,.35)';g.lineWidth=10;g.beginPath();g.arc(cx,cy,R-4,0,TAU);g.stroke();g.restore();
+    g.save();g.globalAlpha=fillA;g.strokeStyle='rgba(255,255,255,.85)';g.lineWidth=3;g.setLineDash([16,10]);g.lineDashOffset=-t*12;g.beginPath();g.arc(cx,cy,R+2,0,TAU);g.stroke();g.setLineDash([]);g.strokeStyle='rgba(255,255,255,.35)';g.lineWidth=10;g.beginPath();g.arc(cx,cy,R-4,0,TAU);g.stroke();g.restore();
     // blueprint ring
-    if(bt<2.9){g.save();g.globalAlpha=1-ss(1.9,2.9,bt);g.strokeStyle='#fff';g.lineWidth=1.6;g.beginPath();g.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+TAU*ss(.1,1.2,bt));g.stroke();g.setLineDash([6,6]);g.beginPath();g.arc(cx,cy,R*1.14,0,TAU*ss(.3,1.3,bt));g.stroke();
+    if(false){g.save();g.globalAlpha=1-ss(1.9,2.9,bt);g.strokeStyle='#fff';g.lineWidth=1.6;g.beginPath();g.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+TAU*ss(.1,1.2,bt));g.stroke();g.setLineDash([6,6]);g.beginPath();g.arc(cx,cy,R*1.14,0,TAU*ss(.3,1.3,bt));g.stroke();
       for(let k=0;k<4;k++){g.beginPath();g.moveTo(cx-R*1.25,cy+(k-1.5)*R*.5);g.lineTo(cx+R*1.25,cy+(k-1.5)*R*.5);g.globalAlpha*=.6;g.stroke();g.globalAlpha/=.6}g.setLineDash([]);
       g.fillStyle='#fff';g.font='600 12px Jost';g.fillText('RENDER PORT  ／  ONE WORLD PLAN',48,H-48);ORDER.forEach(([k,n,ja],i)=>{const an=-Math.PI/2+rot+i*STEP,p=ss(.4+i*.1,1+i*.1,bt);g.lineWidth=5;g.beginPath();g.arc(cx,cy,R+4,an-STEP*.42*p,an+STEP*.42*p);g.stroke();g.lineWidth=1.6;
         const x=cx+Math.cos(an)*R*1.22,y=cy+Math.sin(an)*R*1.22;g.globalAlpha*=p;ell(g,cx+Math.cos(an)*R,cy+Math.sin(an)*R,4,4,'#fff');g.beginPath();g.moveTo(cx+Math.cos(an)*R,cy+Math.sin(an)*R);g.lineTo(x,y);g.stroke();g.textAlign='center';g.fillText(`ISLAND ${n}`,x,y+(Math.sin(an)>0?16:-14));g.font='600 11px "Zen Kaku Gothic New"';g.fillText(ja,x,y+(Math.sin(an)>0?30:-28));g.font='600 12px Jost';g.textAlign='left';g.globalAlpha/=p||1});g.restore()}
     const LBLQ=[];const ISLBLK=()=>{
     // ===== side-view islands standing on the rim (Omron-style elevation drawings, turning with the globe) =====
     {const s=S;const HW=R*STEP/2*.985;// half arc-length of each island
-      const prof=x=>R*.006*Math.cos(x/HW*Math.PI/2);
-      let PI_=0;const place=(x,f,lift=0)=>{const idx=PI_++;if(window.__COL){window.__COL.push({z:CUR_I,kind:window.__K||'main',x,f,lift});return}const eb=TESTM&&bt>=90?1:clamp((bt-4.5-((CUR_I+1)%NI<3?(CUR_I+1)%NI:2)*.2-((x/HW+1)/2)*1.1-(idx%3)*.06)/.55);if(eb<=0)return;const tl=x<XC?0:clamp((XB-x+34*s-(idx%3)*16*s-(idx%7)*3*s)/(120*s));let e2=eb,am=Math.min(1,eb*2.2);
+      const TH=NI*STEP*R/2,profG=u=>R*.005*Math.cos(Math.max(-1,Math.min(1,u/TH))*Math.PI/2),prof=x=>profG(ISLC+x);
+      let PI_=0;const KEEPM=[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]];const place=(x,f,lift=0)=>{const idx=PI_++;const kd=window.__K||'main';
+        if(kd==='tree'){if(idx%2)return}else if(kd==='main'){if(!KEEPM[CUR_I].includes(MI_++))return}
+        if(window.__COL){window.__COL.push({z:CUR_I,kind:kd,x,f,lift});return}
+        const gx=ISLC+x,eb=TESTM&&bt>=90?1:clamp((bt-.4-((gx/ARCH+1)/2)*1.0-(idx%3)*.05)/.5);if(eb<=0)return;const tl=TESTM&&bt>=90?1:clamp((bt-2-(((gx/ARCH+1)/2)*.8+((idx*7+CUR_I*5)%11)/11*1.8))/.5);let e2=eb,am=Math.min(1,eb*2.2);
         if(PASS==='real'){e2=Math.min(eb,tl);if(e2<=0)return;am=Math.min(1,e2*2.4)}else{am*=1-ss(.3,.85,tl);if(am<=0.01)return;e2=1}
-        const bo=1+2.4*Math.pow(e2-1,3)+1.4*Math.pow(e2-1,2);const rg=R+prof(x)+lift;g.save();g.rotate(x/R);g.translate(0,-rg);g.globalAlpha*=am;g.scale(1,bo);f();g.restore()};let CUR_I=0;
+        const bo=1+2.4*Math.pow(e2-1,3)+1.4*Math.pow(e2-1,2);const rg=R+prof(x)+lift;g.save();g.rotate(x/R);g.translate(0,-rg);g.globalAlpha*=am;g.scale(IK,IK*bo);f();g.restore()};let CUR_I=0;
       // --- tiny elevation-drawing kit (base at 0,0, up = -y)
-      const P=(pts,c)=>poly(g,pts,c);
-      const rect=(x,w,h,c,y0=0)=>{g.fillStyle=c;g.fillRect(x-w/2,y0-h,w,h)};
+      const EDGE='rgba(30,35,30,.24)';
+      const P=(pts,c)=>poly(g,pts,texPat(g,c,true),EDGE,.8);
+      const rect=(x,w,h,c,y0=0)=>{g.fillStyle=texPat(g,c,true);g.fillRect(x-w/2,y0-h,w,h);if(w>14*s&&h>10*s){g.fillStyle='rgba(30,45,40,.13)';g.fillRect(x+w*.18,y0-h,w*.32,h);g.fillStyle='rgba(255,255,255,.12)';g.fillRect(x-w/2,y0-h,w*.1,h)}g.strokeStyle=EDGE;g.lineWidth=.8;g.strokeRect(x-w/2,y0-h,w,h)};
       const wins=(x,w,h,rows,cols,c,y0=0,lit=0)=>{const cw=w/cols,rh=h/rows;for(let r_=0;r_<rows;r_++)for(let c_=0;c_<cols;c_++){g.fillStyle=lit&&((r_*7+c_*3)%5===0)&&Math.sin(t*.5+r_+c_)>0?'#ffe7a3':c;g.fillRect(x-w/2+c_*cw+cw*.22,y0-h+r_*rh+rh*.25,cw*.56,rh*.5)}};
       const tree=(x,sz,c,k)=>softTree(g,x,0,sz*s,c,k);
       const ppl=(x,k,o={})=>person(g,x,0,{c:SHIRTS[k%10],k:SKIN[k%4],h:HAIR[k%5],ph:k,sc:s*1.15,...o},t);
       const staffP=(x,o={})=>person(g,x,0,{c:G,k:SKIN[1],h:HAIR[0],cap:M,sc:s*1.15,...o},t);
       const house=(x,w,h,wall,roof)=>{rect(x,w,h,wall);P([[x-w/2-4*s,-h],[x,-h-h*.62],[x+w/2+4*s,-h]],roof);g.fillStyle='#6e8796';g.fillRect(x-w*.32,-h*.7,w*.22,h*.3);g.fillStyle='#7a5236';g.fillRect(x+w*.08,-h*.52,w*.18,h*.52)};
       const wifi=(x,y,c=M)=>{g.strokeStyle=c;g.lineCap='round';for(let q=0;q<3;q++){const u=mod(t*.6+q/3,1);g.globalAlpha*=1;g.lineWidth=2.2*s;g.save();g.globalAlpha=(1-u);g.beginPath();g.arc(x,y,(4+u*14)*s,-Math.PI*.8,-Math.PI*.2);g.stroke();g.restore()}};
-      const ground=(c1,c2)=>{if(window.__COL)return;const ld=Math.min(36*s,Math.max(0,(PH-PH0)*STEP*R));
-        const seg=(A,B)=>{A=Math.max(-HW,A);B=Math.min(HW,B);if(B-A<2)return;const st=(B-A)/Math.max(4,Math.ceil((B-A)/(R*.01)));
-          g.beginPath();for(let x=A;x<=B+.01;x+=st){const a=x/R,r_=R+prof(x);const px=Math.sin(a)*r_,py=-Math.cos(a)*r_;x===A?g.moveTo(px,py):g.lineTo(px,py)}
-          for(let x=B;x>=A-.01;x-=st){const a=x/R,r_=R-5*s;g.lineTo(Math.sin(a)*r_,-Math.cos(a)*r_)}g.closePath();g.fillStyle=c2;g.fill();
-          g.beginPath();for(let x=A;x<=B+.01;x+=st){const a=x/R,r_=R+prof(x);const px=Math.sin(a)*r_,py=-Math.cos(a)*r_;x===A?g.moveTo(px,py):g.lineTo(px,py)}g.strokeStyle=c1;g.lineWidth=7*s;g.lineJoin='round';g.stroke();
-          const q_=rng(CUR_I*31+7);for(let k=0;k<12;k++){const x=(q_()*2-1)*HW*.92,a=x/R,r_=R+prof(x)-1,sz=(5+q_()*3)*s,cl=['#3d6658','#4f7a5c','#5f8f4a','#6f9a52'][q_()*4|0],kd=q_()<.6?'pine':'round';if(x<A||x>B)continue;g.save();g.rotate(a);g.translate(0,-r_);softTree(g,0,0,sz,cl,kd);g.restore()}
-          // 未開の地: rocks, grass and wild bushes before anything is planned
-          if(PASS==='plan'&&WILDA>0){const qw=rng(CUR_I*57+3);g.save();g.globalAlpha*=WILDA;{const qh=rng(CUR_I*13+5);for(let k=0;k<4;k++){const x=(qh()*2-1)*HW*.75,w=(60+qh()*80)*s,h=(28+qh()*44)*s;if(x<A||x>B)continue;g.save();g.rotate(x/R);g.translate(0,-(R+prof(x)-2));g.beginPath();g.moveTo(-w,0);g.bezierCurveTo(-w*.55,-h*.2,-w*.35,-h,0,-h);g.bezierCurveTo(w*.3,-h,w*.6,-h*.25,w,0);g.closePath();g.fillStyle='#7d9c6a';g.fill();g.restore()}}for(let k=0;k<26;k++){const x=(qw()*2-1)*HW*.96,ty=qw(),sc=(.8+qw()*.9)*s,kd=qw();if(x<A||x>B)continue;g.save();g.rotate(x/R);g.translate(0,-(R+prof(x)-1));
-              if(ty<.34){g.beginPath();g.moveTo(-7*sc,0);g.lineTo(-5*sc,-5*sc);g.lineTo(0,-8*sc);g.lineTo(6*sc,-4*sc);g.lineTo(8*sc,0);g.closePath();g.fillStyle='#9aa39a';g.fill()}
-              else if(ty<.7){g.strokeStyle='#5f8f4a';g.lineWidth=1.4;for(let j=-2;j<=2;j++){g.beginPath();g.moveTo(j*2.4*sc,0);g.quadraticCurveTo(j*2.6*sc,-5*sc,j*4*sc,-9*sc);g.stroke()}}
-              else softTree(g,0,0,(7+kd*6)*sc,'#4f7a5c',kd<.5?'pine':'round');g.restore()}
-            // survey stakes appear as the plan begins
-            const sv=ss(3.6,4.4,bt);if(sv>0){g.globalAlpha*=sv;for(let k=-2;k<=2;k++){const x=k*HW*.42;if(x<A||x>B)continue;g.save();g.rotate(x/R);g.translate(0,-(R+prof(x)));g.fillStyle='#c8962a';g.fillRect(-1,-16*s,2,16*s);g.beginPath();g.moveTo(1,-16*s);g.lineTo(9*s,-13*s);g.lineTo(1,-10*s);g.fill();g.restore()}}
-            g.restore()}};
-        if(PASS==='real')seg(XC,XB+ld);else if(XC>=XB+ld-6*s)seg(-HW,HW);else{seg(-HW,XC+1);seg(XB+ld-6*s,HW)}};
+      const ground=()=>{};
+      // --- one continuous island: rock shore, grass top, foam line and rocks along the waterline (replaces the per-island strips)
+      const GRC=['#8db470','#9fbd84','#8db470','#7da466','#86ad68','#7da466','#9fbd84','#8db470'];
+      const groundAll=()=>{if(window.__COL)return;const ga=TESTM&&bt>=90?1:ss(2,3.2,bt);if(PASS==='real'?ga<=0.01:ga>=.99)return;g.save();g.globalAlpha*=PASS==='real'?ga:1-ga;
+        const rngs=[[-TH,TH]];
+        const wob=u=>(Math.sin(u*.045)*1.6+Math.sin(u*.13+1)*1.1)*s,bot=u=>R-13*s+wob(u),top=u=>R+profG(u);
+        const pt=(u,r_)=>[Math.sin(u/R)*r_,-Math.cos(u/R)*r_];
+        g.save();g.translate(cx,cy);g.rotate(rot+(NI-1)/2*STEP);
+        for(const[A,B]of rngs){if(B-A<2)continue;const st=R*.01,n=Math.max(2,Math.ceil((B-A)/st)),us=[];for(let k=0;k<=n;k++)us.push(A+(B-A)*k/n);
+          // rock / earth bank
+          g.beginPath();us.forEach((u,k)=>{const p=pt(u,top(u)-2*s);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});for(let k=us.length-1;k>=0;k--){const p=pt(us[k],bot(us[k]));g.lineTo(p[0],p[1])}g.closePath();
+          g.fillStyle=texPat(g,'#8c7f68',true);g.fill();g.strokeStyle='rgba(30,35,30,.24)';g.lineWidth=.9;g.stroke();
+          // darker underside + wet-sand line
+          g.beginPath();us.forEach((u,k)=>{const p=pt(u,bot(u)+4*s);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});g.strokeStyle='rgba(235,222,190,.8)';g.lineWidth=3*s;g.stroke();
+          g.beginPath();us.forEach((u,k)=>{const p=pt(u,bot(u)+1*s);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});g.strokeStyle='rgba(60,50,38,.25)';g.lineWidth=1.4*s;g.stroke();
+          // grass top, coloured per island but drawn as one seamless band
+          for(let i=0;i<NI;i++){const a=Math.max(A,(i-NI/2)*STEP*R),b=Math.min(B,(i+1-NI/2)*STEP*R);if(b-a<.5)continue;const m=Math.max(2,Math.ceil((b-a)/st));
+            g.beginPath();for(let k=0;k<=m;k++){const u=a+(b-a)*k/m,p=pt(u,top(u));k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])}g.lineCap='butt';g.lineJoin='round';g.strokeStyle=matPat(g,GRC[i],'grass');g.lineWidth=9*s;g.stroke();}
+          g.beginPath();us.forEach((u,k)=>{const p=pt(u,top(u)+4.5*s);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});g.strokeStyle='rgba(40,70,40,.28)';g.lineWidth=1;g.stroke();
+          // trees on the bank
+          const q_=rng(91);for(let u=-TH+14*s;u<TH;u+=(17+q_()*20)*s){const i=Math.min(NI-1,Math.max(0,Math.floor(u/(STEP*R)+NI/2)));if(u<A||u>B)continue;const cl=['#3d6658','#4f7a5c','#5f8f4a','#6f9a52'][q_()*4|0],kd=q_()<.6?'pine':'round',sz=(5+q_()*3)*s;g.save();g.rotate(u/R);g.translate(0,-(top(u)-1));softTree(g,0,0,sz*IK,cl,kd);g.restore()}
+          // foam: two soft wavy lines along the waterline
+          for(let w_=0;w_<2;w_++){g.beginPath();us.forEach((u,k)=>{const p=pt(u,bot(u)-(3+w_*5)*s+Math.sin(u*.06+t*(1.4+w_*.4)+w_*2)*1.3*s);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});g.strokeStyle=`rgba(255,255,255,${w_?.38:.85})`;g.lineWidth=(w_?1.6:2.4)*s;g.lineJoin='round';g.stroke()}
+          // shore rocks: grey, mottled, lit from the upper left
+          const qr=rng(57);for(let u=-TH+30*s;u<TH;u+=(55+qr()*70)*s){const nr=1+(qr()<.5?1:0);for(let r_=0;r_<nr;r_++){const uu=u+r_*(9+qr()*8)*s;if(uu<A||uu>B)continue;const w=(7+qr()*10)*s*(r_?.7:1),h=w*(.55+qr()*.35);
+            g.save();g.rotate(uu/R);g.translate(0,-(bot(uu)-1.5*s));const v=[[-w,0],[-w*.8,-h*.55],[-w*.3,-h],[w*.25,-h*.92],[w*.85,-h*.4],[w,0]];
+            ell(g,w*.2,.5*s,w*1.15,h*.22,'rgba(25,45,40,.22)');P(v,qr()<.5?'#9a9a92':'#85867f');g.fillStyle='rgba(255,255,255,.22)';g.beginPath();g.moveTo(-w*.8,-h*.55);g.lineTo(-w*.3,-h);g.lineTo(w*.1,-h*.9);g.lineTo(-w*.35,-h*.55);g.closePath();g.fill();
+            ell(g,w*1.0,1.2*s,w*.9,h*.18,'rgba(255,255,255,.7)');g.restore()}}
+        }
+        g.restore();g.restore()};
+      const twr=(x,w,h,c,k=0)=>{window.__K='tower';place(x,()=>{rect(0,w,h,c);wins(0,w,h-8*s,Math.max(4,Math.round(h/(10*s))),Math.max(2,Math.round(w/(9*s))),'#d9eef5',0,1);
+          if(k===1){P([[-w/2,-h],[w/2,-h],[w*.18,-h-14*s],[-w*.5,-h-6*s]],shade(c,-.12))}else{rect(0,w*.64,h*.12,shade(c,-.1),-h);rect(0,w*.3,h*.08,shade(c,-.18),-h-h*.12)}
+          line(g,[0,-h-h*.2],[0,-h-h*.2-18*s],'#8a959b',1.4*s);ell(g,0,-h-h*.2-19*s,1.6*s,1.6*s,'#e2604f')});window.__K=null};
       const mtn=(x,w,h,c,snow)=>{window.__K='mountain';place(x,()=>{P([[-w,2*s],[-w*.12,-h],[w*.1,-h*.9],[w,2*s]],c);P([[w*.1,-h*.9],[w,2*s],[w*.05,2*s]],'rgba(30,60,40,.13)');if(snow)P([[-w*.12,-h],[w*.1,-h*.9],[w*.2,-h*.72],[w*.04,-h*.66],[-w*.1,-h*.74],[-w*.28,-h*.68]],'#f3f4f1');
         for(let k=-4;k<=4;k++){const xx=k*w*.2;softTree(g,xx,-Math.max(0,(1-Math.abs(xx)/w)*h*.3)+3*s,6*s,k%2?'#3d6658':'#4f7a5c','pine')}},-3*s);window.__K=null};
       const forest=(n,seed,cols,span=.95)=>{const q=rng(seed);window.__K='tree';for(let k=0;k<n;k++){const x=(q()*2-1)*HW*span;place(x,()=>tree(0,8+q()*5,cols[q()*cols.length|0],q()<.6?'pine':'round'))}window.__K=null};
@@ -2897,24 +3102,28 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
             g.fillStyle=G;rr(g,-w/2+8*s,-26*s,w-16*s,11*s,5*s);g.fill();g.fillStyle='#fff';g.font=`700 ${6*s}px "Zen Kaku Gothic New"`;g.fillText('予約する',-11*s,-18.5*s);
             for(let k=0;k<4;k++){const u=mod(t*.4+k/4,1);g.save();g.globalAlpha*=(1-u)*ss(0,.15,u);ell(g,(k-1.5)*12*s+Math.sin(u*6+k)*8*s,-h-u*70*s,8*s,8*s,['#e2604f','#c8962a','#5fb3cf','#e2604f'][k]);g.restore()}ppl(-w/2-10*s,1,{arms:'phone'})});
           place(HW*.6,()=>{const w=60*s,h=60*s;rect(0,w,h,'#f6f3ea');g.fillStyle='#7fb0c8';g.fillRect(-w/2+5*s,-h+12*s,w-10*s,h-22*s);rect(0,w+4*s,5*s,M,-h);g.fillStyle=G;g.font=`700 ${6*s}px Jost`;g.fillText('WEB STUDIO',-w/2+4*s,-h+9*s);ppl(w/2+8*s,6,{arms:'one'})})}];
-      ORDER.forEach(([k,n,ja],i)=>{const an=-Math.PI/2+rot+i*STEP;if(!window.__COL&&cy+Math.sin(an)*R>H+R0*.5)return;const e=TESTM&&bt>=90?1:clamp((bt-1.8-i*.08)/.9);if(e<=0)return;CUR_I=i;PI_=0;{const d=((((-Math.PI/2-an)%TAU)+TAU+Math.PI)%TAU-Math.PI);XB=d*R;XC=(d-(PH-PH0)*STEP)*R}const eb=1+2.4*Math.pow(e-1,3)+1.4*Math.pow(e-1,2);
-        g.save();g.globalAlpha=Math.min(1,e*2)*(1-ss(.15,.55,q));g.translate(cx,cy);g.rotate(an+Math.PI/2);g.translate(0,-R);g.scale(1,eb);g.translate(0,R);ISLD[i]();g.restore();
+      // modern city on the right-hand islands
+      const CITY={5:()=>{twr(HW*.64,30*s,118*s,'#6f9bb5');twr(HW*.93,22*s,86*s,'#8fb3c4',1)},6:()=>{twr(-HW*.86,24*s,102*s,'#7fa7bf',1);twr(HW*.26,32*s,148*s,'#5f8fae')},7:()=>{twr(-HW*.9,26*s,112*s,'#6f9bb5');twr(HW*.36,30*s,142*s,'#7fa7bf');twr(HW*.92,22*s,98*s,'#5f8fae',1)}};
+      groundAll();
+      ORDER.forEach(([k,n,ja],i)=>{const an=-Math.PI/2+rot+i*STEP;if(!window.__COL&&cy+Math.sin(an)*R>H+R0*.5)return;const e=TESTM&&bt>=90?1:clamp((bt-.3-i*.05)/.7);if(e<=0)return;CUR_I=i;PI_=0;ISLC=(i-(NI-1)/2)*STEP*R;MI_=0;const eb=1+2.4*Math.pow(e-1,3)+1.4*Math.pow(e-1,2);
+        g.save();g.globalAlpha=Math.min(1,e*2);g.translate(cx,cy);g.rotate(an+Math.PI/2);g.translate(0,-R);g.scale(1,eb);g.translate(0,R);ISLD[i]();if(CITY[i])CITY[i]();g.restore();
         const aw=((an+Math.PI/2)%TAU+TAU+Math.PI)%TAU-Math.PI,la=Math.min(1,e*2)*(1-ss(0,.3,q))*ss(-.62,-.4,aw)*(1-ss(-.02,.1,aw))*ss(6,6.8,bt);if(la>0)LBLQ.push(()=>{const x0_=cx+Math.cos(an)*R*1.0+Math.cos(an)*R0*.36,x=Math.min(W-70,Math.max(W<820?70:300,x0_)),y=cy+Math.sin(an)*R*1.0+Math.sin(an)*R0*.36;g.save();g.globalAlpha=la;g.font='700 14px "Zen Kaku Gothic New", sans-serif';const tw=g.measureText(ja).width+46;g.fillStyle=G;rr(g,x-tw/2,y-15,tw,30,15);g.fill();
           ell(g,x-tw/2+15,y,10,10,M);g.fillStyle='#fff';g.font='700 10px Jost';g.textAlign='center';g.fillText(n,x-tw/2+15,y+3.5);g.font='700 14px "Zen Kaku Gothic New", sans-serif';g.textAlign='left';g.fillText(ja,x-tw/2+31,y+5);g.restore()})})}
     };ISLANDS(t,bt,q,{R,cx,cy,R0,rot,S,ISLBLK,LBLQ});
     LAYER('09_birds');// gulls
-    g.save();g.globalAlpha=objA*(1-ss(0,.4,q));for(let k=0;k<4;k++){const x=mod(.1+k*.22-t*.012,1.2)*W-W*.1,y=H*(.22+k*.035)+Math.sin(t+k)*6;gull(x,y,t,k,S*1.1)}g.restore()}
+    g.save();g.globalAlpha=objA*(1-ss(.5,1,q));for(let k=0;k<4;k++){const x=mod(.1+k*.22-t*.012,1.2)*W-W*.1,y=H*(.22+k*.035)+Math.sin(t+k)*6;gull(x,y,t,k,S*1.1)}g.restore()}
   /* ---------- loop: build-up, scroll (globe swells into the map sea), plane hand-off ---------- */
-  function resize(){dpr=Math.min(2,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  function resize(){dpr=Math.min(2,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    const R0_=W<820?W*.95:Math.max(W*.6,H*.82);STEP=2*Math.asin(Math.min(.97,W*.44/R0_))/NI*(W<820?1.8:1);IK=clamp(1.7*STEP/(TAU/NI),.2,1)}
   addEventListener('resize',resize);resize();
   const rb=document.querySelector('.replay');if(rb)rb.addEventListener('click',()=>{T0=performance.now()});
   const bt0=+(new URLSearchParams(location.search).get('bt')??NaN),TESTM=!isNaN(bt0);
   /* ---------- island navigator (slideshow-style progress + plane position + jump) ---------- */
-  const NP=7;let PH=0,navClk=((+(new URLSearchParams(location.search).get('ph'))||0)-.6)*NP,PH0=-.6,lastNow=null,jump=null,paused=false;
+  const NP=7;let PH=3.5,navClk=0,PH0=3.5,lastNow=null,jump=null,paused=false;
   const gph=c=>c/NP;
   const nav=document.createElement('nav');nav.id='gnav';nav.setAttribute('aria-label','島ナビゲーション');
   nav.innerHTML=ORDER.map(([k,n,ja],i)=>`<button class="gn-seg" data-i="${i}" type="button"><span class="gn-lb"><b>${n}</b>${ja}</span><span class="gn-tr"><span class="gn-fill"></span></span></button>`).join('')+`<span class="gn-pl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>`;
-  document.body.appendChild(nav);const segs=[...nav.querySelectorAll('.gn-seg')],fills=segs.map(s=>s.querySelector('.gn-fill')),pl=nav.querySelector('.gn-pl');
+  document.body.appendChild(nav);nav.style.display='none';const segs=[...nav.querySelectorAll('.gn-seg')],fills=segs.map(s=>s.querySelector('.gn-fill')),pl=nav.querySelector('.gn-pl');
   const st=document.createElement('style');st.textContent=`#gnav{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:8;display:flex;gap:6px;align-items:flex-end;padding:10px 14px 12px;border-radius:16px;background:rgba(46,68,41,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(20,40,30,.18);opacity:var(--gnA,0);transition:opacity .3s;width:min(880px,92vw)}
   #gnav .gn-seg{flex:1;min-width:0;white-space:nowrap;display:flex;flex-direction:column;gap:7px;background:none;border:0;padding:4px 2px 0;cursor:pointer;color:rgba(255,255,255,.62);font:700 11px/1 "Zen Kaku Gothic New",sans-serif;letter-spacing:.06em;text-align:left}
   #gnav .gn-seg b{font:600 11px/1 Jost,sans-serif;color:#c8962a;margin-right:6px;letter-spacing:.1em}#gnav .gn-seg.on{color:#fff}#gnav .gn-seg:hover{color:#fff}
@@ -2926,21 +3135,20 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
     jump={from:cur,to:best,t0:performance.now(),dur:800+380*Math.abs(best-cur)}}));
   nav.addEventListener('mouseenter',()=>paused=true);nav.addEventListener('mouseleave',()=>paused=false);
   function navUpdate(now,bt,hu){const dt=lastNow?Math.min(.1,(now-lastNow)/1000):0;lastNow=now;
-    if(jump){const e=clamp((now-jump.t0)/jump.dur);PH=lerp(jump.from,jump.to,easeIO(e));if(e>=1){navClk=jump.to*NP;PH=jump.to;jump=null}}
-    else{if(!paused&&(TESTM||bt>6.6))navClk+=dt;PH=gph(navClk)}
+    PH=3.5;
     const nc_=Math.max(0,navClk),k=jump?Math.round(jump.to):Math.floor(nc_/NP),f=jump?0:(nc_/NP-Math.floor(nc_/NP)),cur=((k%NI)+NI)%NI;
     segs.forEach((sg,i)=>{sg.classList.toggle('on',i===cur);fills[i].style.width=(i<cur?100:i===cur?f*100:0).toFixed(2)+'%'});
     const pm=PH<0?0:((PH%NI)+NI)%NI,w=nav.clientWidth-28;pl.style.left=(14+w*pm/NI)+'px';
-    document.documentElement.style.setProperty('--gnA',(ss(6.2,7,bt)*(1-clamp(hu*1.6))).toFixed(3));nav.style.pointerEvents=hu>.4?'none':'auto'}
+    document.documentElement.style.setProperty('--gnA',(ss(5.2,6,bt)*(1-clamp(hu*1.6))).toFixed(3));nav.style.pointerEvents=hu>.4?'none':'auto'}
   const ln=()=>(typeof sLine==='number'&&sLine!==null)?sLine:scrollY+H*.5;
   function progress(){let q=0,u=-1;if(typeof SEGS!=='undefined'&&SEGS.length){const hs=SEGS.find(s=>s.stop&&s.a===0),tr=SEGS.find(s=>!s.stop&&s.from===1),L=ln();
       if(hs)q=clamp((L-(hs.top+H*.5+H*.95))/(H*(W<820?1.15:2.3)));if(tr&&L>=tr.top)u=(L-tr.top)/tr.h}return{q,u}}
-  function loop(now){if(window.__GS_STOP)return;const t=(now-T0)/1000,bt=isNaN(bt0)?t:bt0;{const pq=progress();navUpdate(now,bt,Math.max(typeof HEROU==='number'?HEROU:0,pq.q))}document.documentElement.style.setProperty('--hmA',ss(5.8,6.8,bt).toFixed(3));const{q,u}=progress();US=ss(.6,1,q);document.documentElement.style.setProperty('--usU',US.toFixed(3));
+  function loop(now){if(window.__GS_STOP)return;const t=(now-T0)/1000,bt=isNaN(bt0)?t:bt0;{const pq=progress();navUpdate(now,bt,Math.max(typeof HEROU==='number'?HEROU:0,pq.q))}document.documentElement.style.setProperty('--hmA',ss(2.2,3.2,bt).toFixed(3));const{q,u}=progress();US=ss(.6,1,q);{const rbn=document.querySelector('.replay');if(rbn)rbn.style.pointerEvents=(bt>3.4&&q<.05)?'auto':'none'}document.documentElement.style.setProperty('--usU',US.toFixed(3));
     g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);const hu=(typeof HEROU==='number'?HEROU:0)*(1-q);
-    if(q<1){g.save();g.globalAlpha=1-ss(.5,1,q);draw(t,bt,q);
-      const hw=(typeof HEROU==='number'?HEROU:0);if(hw>0){const gr=g.createLinearGradient(0,0,W*.55,0);gr.addColorStop(0,`rgba(28,52,46,${.28*hw})`);gr.addColorStop(1,'rgba(28,52,46,0)');g.fillStyle=gr;g.globalAlpha=1-ss(.5,1,q);g.fillRect(0,0,W,H)}g.restore()}
+    if(q<1){g.save();draw(t,bt,q);
+      const hw=(typeof HEROU==='number'?HEROU:0);if(false&&hw>0){const gr=g.createLinearGradient(0,0,W*.55,0);gr.addColorStop(0,`rgba(28,52,46,${.28*hw})`);gr.addColorStop(1,'rgba(28,52,46,0)');g.fillStyle=gr;g.globalAlpha=1-ss(.5,1,q);g.fillRect(0,0,W,H)}g.restore()}
     // the plane flies above the globe, stays with you, then heads for island 01
-    const pa=ss(5.9,7,bt);if(pa>0&&u<.22){const qe=easeIO(q),S=Math.max(W*.6,H*.82)/700;const mobP=W<820,PX=mobP?W*.82:MAPL()-250+(Math.min(440,W*.34)+165)+(W>=1100?0:0),PY=mobP?H*.1:Math.max(60,H*.07)+60,PS=mobP?.55:1;let x=lerp(W*.5,PX,qe)+lerp(-W*.6,0,easeIO(ss(5.9,7.6,bt))),y=lerp(H*.2,PY,qe)+Math.sin(t*1.1)*4,s=lerp(S*.95,PS,qe);
+    const pa=ss(5,6.2,bt);if(pa>0&&u<.22){const qe=easeIO(q),S=Math.max(W*.6,H*.82)/700;const mobP=W<820,PX=mobP?W*.82:MAPL()-250+(Math.min(440,W*.34)+165)+(W>=1100?0:0),PY=mobP?H*.1:Math.max(60,H*.07)+60,PS=mobP?.55:1;let x=lerp(W*.5,PX,qe)+lerp(-W*.6,0,easeIO(ss(5,6.8,bt))),y=lerp(H*.2,PY,qe)+Math.sin(t*1.1)*4,s=lerp(S*.95,PS,qe);
       if(u>=0&&typeof cam!=='undefined'&&cam&&typeof planeState==='function'){const e=easeIO(clamp(u/.2)),ps=planeState(.2),wx=ps.x,wy=ps.y-(ps.alt||0)*190,tx=(wx-cam.cx)*cam.z+cam.sx,ty=(wy-cam.cy)*cam.z+cam.sy,ts=13*(1+.55*(ps.alt||0))*cam.z*7.5/130;
         const mx=(x+tx)/2+W*.12,my=Math.min(y,ty)-H*.18;x=(1-e)*(1-e)*x+2*e*(1-e)*mx+e*e*tx;y=(1-e)*(1-e)*y+2*e*(1-e)*my+e*e*ty;s=lerp(s,ts,e)}
       g.save();g.globalAlpha=pa*(u<0?1:1-ss(.15,.21,u));plane(t,x,y,s,1);g.restore()}
@@ -2953,6 +3161,157 @@ const GS=(()=>{const G='#2e4429',M='#c8962a';
   if(/assets=1/.test(location.search)){window.__GS_STOP=true}
   requestAnimationFrame(loop);return{cv}})();
 
+})();
+</script>
+<script>
+/* ===== 私たち: 体験創造サポート図 (rpd) ===== */
+(()=>{
+const root=document.getElementById('rpd');if(!root)return;
+const NS='http://www.w3.org/2000/svg',C=320,RA=96,RB=202,RC=286,SB=-95,SC=-74;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const A=[
+ {l:['新規事業','開発'],s:['新規事業','開発'],n:'新規事業開発',d:'「何をつくるか」から一緒に考え、事業を立ち上げます。'},
+ {l:['ブランディング'],s:['ブラン','ディング'],n:'ブランディング',d:'場やサービスの“らしさ”を、言葉とデザインで形にします。'},
+ {l:['デザイン','設計・施工'],s:['デザイン','設計施工'],n:'デザイン設計・施工',d:'空間デザインから設計・施工まで、一貫して具現化します。'}];
+const B=[
+ {l:'コンセプト企画',w:118,d:'誰に、どんな体験を届けるのかを描きます。'},
+ {l:'事業計画',w:80,d:'収支やスケジュールまで、実現できる計画に落とし込みます。'},
+ {l:'デザイン/設計',w:112,d:'体験を、空間・建築のかたちに設計します。'},
+ {l:'施工',w:64,d:'設計の意図を損なわず、現場で具現化します。'},
+ {l:'WEB/広告',w:100,d:'集客の入口となるサイト・広告をつくります。'},
+ {l:'施設運用',w:80,d:'予約管理や運営代行で、開業後も伴走します。'},
+ {l:'ブランディング',w:118,d:'運用しながら磨き続け、選ばれ続ける場に育てます。'}];
+const IC={
+ shop:'M-7-2l1-5h12l1 5zM-7-2q1.75 2.4 3.5 0q1.75 2.4 3.5 0q1.75 2.4 3.5 0q1.75 2.4 3.5 0M-6 0.5V7h12V0.5M-2 7V3h4v4',
+ office:'M-6 7V-7h10V7M4-2h3v9M-8 7h16M-3.5-4h1M.5-4h1M-3.5-1h1M.5-1h1M-3.5 2h1M.5 2h1',
+ house:'M-7.5 0.5L0-6.5l7.5 7M-5.5-1.5V7h11v-8.5M-1.8 7V2.5h3.6V7',
+ tent:'M-8 7h16M-6.5 7L0-6l6.5 13M-2.2 7L0 2.2 2.2 7M-1.4-8L0-6l1.4-2',
+ event:'M-8-5Q0 0 8-5M-6.2-4.1l1.4 5 2.2-4M-1.2-2.6L.3 2.6l1.9-5.2M4.2-3.6l1.3 4.7 2-5.3',
+ hotel:'M-8-6V6M-8 2H8V6M8 2V-.5Q8-3 5.5-3H-1.5V2M-4.4-.6a1.8 1.8 0 1 0 0-.01',
+ dx:'M-5-5h10v10h-10zM-2-2h4v4h-4zM-2.5-5v-2.6M2.5-5v-2.6M-2.5 5v2.6M2.5 5v2.6M-5-2.5h-2.6M-5 2.5h-2.6M5-2.5h2.6M5 2.5h2.6',
+ web:'M-8-6h16v12h-16zM-8-2.5h16M-6-4.3h.6M-4-4.3h.6'};
+const Cn=[
+ {l:'商業店舗',i:'shop',w:96,d:'店舗の企画・空間デザインから集客まで。'},
+ {l:'オフィス',i:'office',w:96,d:'働く時間が心地よくなるオフィスづくり。'},
+ {l:'住居',i:'house',w:72,d:'個人の住まいやリフォームにも対応します。'},
+ {l:'キャンプ',i:'tent',w:96,d:'自社施設の運営ノウハウを活かした場づくり。'},
+ {l:'イベント',i:'event',w:96,d:'一瞬の体験を演出する、イベントの企画・空間づくり。'},
+ {l:'ホテル・旅館',i:'hotel',w:121,d:'宿泊施設の開業準備から運営代行まで。'},
+ {l:'DX',i:'dx',w:74,d:'予約の自動化やスマートロックなど、運営のデジタル化。'},
+ {l:'WEB',i:'web',w:80,d:'集客の顔となるWEBサイト・システムの制作。'}];
+const rad=a=>a*Math.PI/180, P=(r,a)=>[C+r*Math.cos(rad(a)),C+r*Math.sin(rad(a))];
+const aA=i=>-90+120*i, aB=i=>SB+360/7*i, aC=i=>SC+45*i;
+const svg=root.querySelector('svg'),cv=root.querySelector('canvas'),cap=root.querySelector('.rpd-cap'),capS=cap.querySelector('span');
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const txt=(p,x,y,s,cls)=>{const t=el('text',{x,y,'text-anchor':'middle','dominant-baseline':'central',class:cls||''},p);t.textContent=s;return t};
+const arc=(r,a0,a1)=>{const[p,q]=[P(r,a0),P(r,a1)];return `M${p[0].toFixed(1)} ${p[1].toFixed(1)}A${r} ${r} 0 ${(a1-a0)>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`};
+// ---- build svg ----
+const gR=el('g',{},svg);
+el('circle',{cx:C,cy:C,r:RC,class:'trkC ring',style:'--d:.9s'},gR);
+el('circle',{cx:C,cy:C,r:RB,class:'trkB ring',style:'--d:.5s'},gR);
+el('circle',{cx:C,cy:C,r:RB,class:'trkBon',transform:`rotate(${SB} ${C} ${C})`},gR);
+const segs=B.map((_,i)=>el('path',{d:arc(RB,aB(i),aB(i)+360/7),class:'seg'},gR));
+const gArw=el('g',{class:'ring',style:'--d:.8s'},gR);
+B.forEach((_,i)=>{const a=aB(i)+360/14,[x,y]=P(RB,a),tx=-Math.sin(rad(a)),ty=Math.cos(rad(a)),nx=Math.cos(rad(a)),ny=Math.sin(rad(a));
+ el('path',{class:'arw',d:`M${x-tx*3+nx*5} ${y-ty*3+ny*5}L${x+tx*3} ${y+ty*3}L${x-tx*3-nx*5} ${y-ty*3-ny*5}`},gArw)});
+el('circle',{cx:C,cy:C,r:RA,class:'trkA ring',style:'--d:.15s'},gR);
+// core
+const core=el('g',{class:'nd core',style:'--d:0s'},svg);
+el('circle',{cx:C,cy:C,r:40},core);el('circle',{cx:C,cy:C,r:22,class:'rg'},core);
+el('rect',{x:C-5,y:C-17,width:10,height:34,rx:2.5,transform:`rotate(-28 ${C} ${C})`},core);
+// A
+const nA=A.map((o,i)=>{const[x,y]=P(RA,aA(i));const g=el('g',{class:'nd ndA',style:`--d:${.25+i*.08}s`},svg);
+ el('circle',{cx:x,cy:y,r:46},g);
+ const pc=el('g',{class:'pc-only'},g),sm=el('g',{class:'sm-only'},g);
+ o.l.forEach((s,k)=>txt(pc,x,y+(k-(o.l.length-1)/2)*17,s,s.length>6?'lg':''));
+ o.s.forEach((s,k)=>{const t=txt(sm,x,y+(k-(o.s.length-1)/2)*26,s);t.style.fontSize='22px'});
+ return g});
+// B
+const nB=B.map((o,i)=>{const[x,y]=P(RB,aB(i));const g=el('g',{class:'nd ndB',style:`--d:${.6+i*.07}s`,tabindex:0,role:'button','aria-label':`${String(i+1).padStart(2,'0')} ${o.l}`},svg);
+ const pc=el('g',{class:'pc-only'},g),sm=el('g',{class:'sm-only'},g);
+ el('rect',{x:x-o.w/2,y:y-23,width:o.w,height:46,rx:23,class:'bg'},pc);
+ txt(pc,x,y-9,String(i+1).padStart(2,'0'),'num');txt(pc,x,y+9,o.l,'lb');
+ el('circle',{cx:x,cy:y,r:27,class:'bg'},sm);const t=txt(sm,x,y+1,String(i+1).padStart(2,'0'),'num');t.style.fontSize='22px';
+ return g});
+// C
+const nC=Cn.map((o,i)=>{const[x,y]=P(RC,aC(i));const g=el('g',{class:'nd ndC',style:`--d:${1+i*.05}s`},svg);
+ const pc=el('g',{class:'pc-only'},g),sm=el('g',{class:'sm-only'},g);
+ el('rect',{x:x-o.w/2,y:y-17,width:o.w,height:34,rx:17,class:'bg'},pc);
+ el('path',{d:IC[o.i],class:'ic',transform:`translate(${x-o.w/2+21} ${y})`},pc);
+ const t=txt(pc,x+11,y,o.l);
+ el('circle',{cx:x,cy:y,r:27,class:'bg'},sm);el('path',{d:IC[o.i],class:'ic',transform:`translate(${x} ${y}) scale(1.6)`,style:'stroke-width:1.3'},sm);
+ return g});
+// SP用リスト
+root.querySelector('.rpd-list').innerHTML=
+ `<dl class="lA"><dt>PHASE<b>各フェーズから体験価値を創造</b></dt><dd>${A.map(o=>`<span>${o.n}</span>`).join('')}</dd></dl>`+
+ `<dl class="lB"><dt>PROCESS<b>一括または一部をサポート</b></dt><dd>${B.map((o,i)=>`<span data-i="${i}"><i>${String(i+1).padStart(2,'0')}</i>${o.l}</span>`).join('')}</dd></dl>`+
+ `<dl class="lC"><dt>FIELD<b>様々な業種をサポート</b></dt><dd>${Cn.map(o=>`<span>${o.l}</span>`).join('')}</dd></dl>`;
+const lB=[...root.querySelectorAll('.lB span')];
+// ---- state ----
+let mode='all',sel=new Set(),hov=null,auto=true,stepT=0,stepI=0,vis=false;
+const fine=matchMedia('(hover:hover)').matches,TW=fine?'クリック':'タップ';
+const nm=i=>`${String(i+1).padStart(2,'0')} ${B[i].l}`;
+function capHTML(){
+ if(hov)return hov;
+ if(mode==='all')return `<span><b>01〜07の全工程</b>を、窓口ひとつで<b>まるごと一括</b>対応。<i class="rpd-hint">工程を${TW}すると「一部だけ」に切り替わります</i></span>`;
+ const s=[...sel].sort((a,b)=>a-b);
+ if(!s.length)return `<span>必要な工程を選んでください。<b>どこからでも</b>ご相談いただけます。<i class="rpd-hint">工程を${TW}で選択／解除</i></span>`;
+ return `<span><b>${s.map(i=>B[i].l).join('・')}</b>だけのご相談もOK。必要な工程から関わります。<i class="rpd-hint">工程を${TW}で選択／解除</i></span>`;
+}
+let capLast='';
+function render(){
+ root.classList.toggle('all',mode==='all');root.classList.toggle('part',mode==='part');
+ nB.forEach((g,i)=>{const on=mode==='all'||sel.has(i);g.classList.toggle('on',on);g.setAttribute('aria-pressed',on)});
+ lB.forEach((s,i)=>s.classList.toggle('on',mode==='all'||sel.has(i)));
+ segs.forEach((p,i)=>p.classList.toggle('on',mode==='part'&&sel.has(i)&&sel.has((i+1)%7)));
+ root.querySelectorAll('.rpd-sw button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===mode));
+ const h=capHTML();if(h!==capLast){capLast=h;cap.classList.add('sw');clearTimeout(cap._t);cap._t=setTimeout(()=>{capS.innerHTML=h;cap.classList.remove('sw')},180)}
+}
+const stopAuto=()=>{auto=false};
+function toggleStep(i){stopAuto();if(mode==='all'){mode='part';sel=new Set([i])}else{sel.has(i)?sel.delete(i):sel.add(i)}render()}
+nB.forEach((g,i)=>{g.addEventListener('click',()=>toggleStep(i));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleStep(i)}})});
+lB.forEach((s,i)=>s.addEventListener('click',()=>toggleStep(i)));
+root.querySelectorAll('.rpd-sw button').forEach(b=>b.addEventListener('click',()=>{stopAuto();mode=b.dataset.m;if(mode==='part'&&!sel.size)sel=new Set([0,1]);render()}));
+const setHov=h=>{hov=h;render()};
+if(fine){
+ nA.forEach((g,i)=>{g.addEventListener('mouseenter',()=>setHov(`<span><b>${A[i].n}</b>｜${A[i].d}</span>`));g.addEventListener('mouseleave',()=>setHov(null))});
+ nB.forEach((g,i)=>{g.addEventListener('mouseenter',()=>setHov(`<span><b>${nm(i)}</b>｜${B[i].d}</span>`));g.addEventListener('mouseleave',()=>setHov(null))});
+ nC.forEach((g,i)=>{g.addEventListener('mouseenter',()=>setHov(`<span><b>${Cn[i].l}</b>｜${Cn[i].d}</span>`));g.addEventListener('mouseleave',()=>setHov(null))});
+}
+// 自動デモ：一括 → 一部(いくつかの組合せ) をループ。操作されたら停止
+const SEQ=[{m:'all',t:5600},{m:'part',s:[2,3],t:3400},{m:'part',s:[4,5],t:3400},{m:'part',s:[0,1,2],t:3400}];
+function tickAuto(dt){if(!auto||hov||!root.classList.contains('in'))return;stepT+=dt;if(stepT>SEQ[stepI].t){stepT=0;stepI=(stepI+1)%SEQ.length;const s=SEQ[stepI];mode=s.m;sel=new Set(s.s||[]);render()}}
+// サイズ（SP判定）
+const ro=new ResizeObserver(()=>{const w=root.clientWidth;root.classList.toggle('sm',w<420);sizeCv()});
+// ---- canvas: 波紋 + 中心から広がる光 ----
+const ctx=cv.getContext('2d');let cw=0,k=1;
+function sizeCv(){const w=cv.clientWidth;if(!w)return;const dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.round(w*dpr);cv.height=Math.round(w*dpr);k=w*dpr/640;cw=w}
+const SP=B.map((_,i)=>({a:aB(i),ph:Math.random()}));
+let lt=0,T=0;
+function draw(now){
+ const dt=lt?Math.min(now-lt,60):16;lt=now;T+=dt;tickAuto(dt);
+ ctx.setTransform(k,0,0,k,0,0);ctx.clearRect(0,0,640,640);
+ // 波紋
+ const PER=3600;for(let j=0;j<3;j++){const p=((T/PER)+j/3)%1,r=44+p*280;ctx.beginPath();ctx.arc(C,C,r,0,Math.PI*2);ctx.strokeStyle=`rgba(255,255,255,${(.28*Math.pow(1-p,1.4)).toFixed(3)})`;ctx.lineWidth=1.3;ctx.stroke()}
+ // スポーク + 光の粒
+ SP.forEach((s,i)=>{const on=mode==='all'||sel.has(i);const[x0,y0]=P(44,s.a),[x1,y1]=P(RB-26,s.a);
+  ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.setLineDash([2,5]);ctx.strokeStyle=on?'rgba(243,214,138,.75)':'rgba(255,255,255,.22)';ctx.lineWidth=1.4;ctx.stroke();ctx.setLineDash([]);
+  if(!on)return;
+  for(let q=0;q<2;q++){const t=((T/1700)+s.ph+q/2)%1;const r=44+(RB-26-44)*t;const[x,y]=P(r,s.a);ctx.beginPath();ctx.arc(x,y,2.6,0,Math.PI*2);ctx.fillStyle=`rgba(255,236,180,${Math.sin(Math.PI*t).toFixed(3)})`;ctx.fill()}
+ });
+ // 外周：業種へ広がる光（一括時のみ）
+ if(mode==='all')Cn.forEach((_,i)=>{const a=aC(i),t=((T/2600)+i/8)%1;const[x,y]=P(RB+30+(RC-60-RB)*t,a);ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${(.8*Math.sin(Math.PI*t)).toFixed(3)})`;ctx.fill()});
+}
+function drawStatic(){T=0;draw(performance.now())}
+let raf=0;const live=()=>vis&&root.classList.contains('in');const loop=n=>{draw(n);raf=live()?requestAnimationFrame(loop):0};
+const start=()=>{if(RM){drawStatic();return}if(!raf&&live()){lt=0;raf=requestAnimationFrame(loop)}};
+new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)start()}).observe(root);
+// 出現：HEROパネルが表示されたら中心から順に広がる
+const panel=root.closest('.panel');
+const sync=()=>{const on=!panel||panel.classList.contains('on');if(on&&!root.classList.contains('in')){root.classList.add('in');stepT=0;stepI=0;mode='all';sel=new Set();render();start();root.querySelector('.trkBon').style.transitionDelay='1.2s';setTimeout(()=>root.querySelector('.trkBon').style.transitionDelay='',1500)}else if(!on&&root.classList.contains('in'))root.classList.remove('in')};
+if(panel&&panel.classList.contains('hero')===false&&!document.querySelector('.hero .panel'))root.classList.add('in');
+if(panel)new MutationObserver(sync).observe(panel,{attributes:true,attributeFilter:['class']});
+ro.observe(root);sync();render();
 })();
 </script>
 </body>
